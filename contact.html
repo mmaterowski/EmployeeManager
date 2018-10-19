@@ -1,0 +1,33 @@
+<div class="container" ng-show="data">
+        <h1>Here you can add an employee</h1>
+    <div class="mg">
+        <form name="contactForm">
+            <div class="form-group">
+                <label for="employeeName">Name</label>
+                <input type="text" name="employeeName" class="form-control" placeholder="Name" required="true">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Surname</label>
+                <input type="text" name="employeeSurname" class="form-control" placeholder="Surname" required="true">
+            </div>
+            <div class="form-group">
+                <label for="employeedSince">Working in company since</label>
+                <input type="text" name="employeedSince" class="form-control" placeholder="yyyy/mm/dd" required="true">
+            </div>
+            <div class="form-group">
+                <label for="employeedSince">Number of vacation days</label>
+                <input type="text" name="vacationDays" class="form-control" placeholder="" required="true">
+            </div>
+            <div class="form-group">
+                <label for="employeedSince">Superior full name</label>
+                <input type="text" name="superiorName" class="form-control" placeholder="eg. John Smith" required="true">
+            </div>
+            <div class="btn btn-group" ng-submit="addEmployee()">
+
+                <input type="submit" value="Submit" class="btn btn-success" />
+                <a href="#" class="btn btn-danger">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+</div>

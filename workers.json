@@ -1,50 +1,50 @@
 [
     {
         "id": 1,
-        "employeeName": "Ora",
-        "employeeSurname": "Page",
+        "name": "Ora",
+        "surname": "Page",
         "employedSince": "2018-01-01",
         "vacationDays" : 4,
-        "superiorName" : "Dolores Gill"
+        "supervisorName" : "Dolores Gill"
     },
     {
         "id": 2,
-        "employeeName": "Antonio",
-        "employeeSurname": "Morris",
+        "name": "Antonio",
+        "surname": "Morris",
         "employedSince": "2018-03-23",
         "vacationDays" : 5,
-        "superiorName" : "Dolores Gill"
+        "supervisorName" : "Dolores Gill"
     },
     {
         "id": 3,
-        "employeeName": "Andre",
-        "employeeSurname": "Brewer",
+        "name": "Andre",
+        "surname": "Brewer",
         "employedSince": "2018-07-19",
         "vacationDays" : 10,
-        "superiorName" : "Ethel Ingram"
+        "supervisorName" : "Ethel Ingram"
     },
     {
         "id": 4,
-        "employeeName": "Paulette",
-        "employeeSurname": "Stewart",
+        "name": "Paulette",
+        "surname": "Stewart",
         "employedSince": "2017-03-01",
         "vacationDays" : 2,
-        "superiorName" : "Ethel Ingram"
+        "supervisorName" : "Ethel Ingram"
     },
     {
         "id": 5,
-        "employeeName": "Dave",
-        "employeeSurname": "Adams",
+        "name": "Dave",
+        "surname": "Adams",
         "employedSince": "2018-09-10",
         "vacationDays" : 15,
-        "superiorName" : "Ethel Ingram"
+        "supervisorName" : "Ethel Ingram"
     },
     {
         "id": 6,
-        "employeeName": "Elisa",
-        "employeeSurname": "Santos",
+        "name": "Elisa",
+        "surname": "Santos",
         "employedSince": "2017-12-10",
         "vacationDays" : 15,
-        "superiorName" : "Ethel Ingram"
+        "supervisorName" : "Ethel Ingram"
     }
 ]

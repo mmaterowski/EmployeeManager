@@ -1,45 +1,53 @@
 <div class="container">
 
-<div ng-hide="data">
+    <div ng-hide="data">
         <h1>Click a button to fetch user data</h1>
         <form name="searchUser" ng-submit="fetchEmployeeData()">
-                <input type="submit" value="Fetch employee data" class="btn btn-success" />
-          </form>
-</div>
+            <input type="submit" value="Fetch employee data" class="btn btn-success" />
+        </form>
+    </div>
 
-<div class="alert alert-danger" ng-show="error">{{error}}</div>
+    <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
-<div class="col-12" ng-show="data">
-    <h1>That's employee data:</h1>
-  <table class="table table-striped table-hover">
-      <thead>
-         
+    <div class="col-12" ng-show="data">
+        <h1>That's employee data</h1>
+        <table class="table table-striped table-hover">
+            <thead>
 
-          </tr>
-          <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Surname</th>
-              <th scope="col">Vacation Days</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr ng-repeat="employee in data">
-                <th scope="row">{{employee.id}}</th> 
-                <td>{{employee.employeeName}}</td>
-                <td>{{employee.employeeSurname}}</td>
-                <td>{{employee.vacationDays}}</td>
-          </tr>
-      </tbody>
-  </table>
-</div>
-<div class="row" ng-show="data">
-      <div class="col-md-2 col-xs-12">
-              <div class="btn btn-success">Add employee</div>
-          </div>
-          <div class=col-xs-1><h2></h2></div>
-          <div class="col-md-2 col-xs-12">
-              <div class="btn btn-danger">Remove employee</div>
-          </div>
-</div>
+
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Started working on:</th>
+                    <th scope="col">Supervisor</th>
+                    <th scope="col">Vacation Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in data">
+                    <th scope="row">{{employee.id}}</th>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.surname}}</td>
+                    <td>{{employee.employedSince}}</td>
+                    <td>{{employee.supervisorName}}</td>
+                    <td>{{employee.vacationDays}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+     <div class="row" ng-show="data">
+        <div class="col-md-2 col-xs-12">
+           <a href="#!contact">
+            <div class="btn btn-success">Add employee</div>
+            </a> 
+        </div>
+        <div class=col-xs-1>
+            <h2></h2>
+        </div>
+        <div class="col-md-2 col-xs-12">
+            <div class="btn btn-danger">Remove employee</div>
+        </div>
+    </div> 
 </div>
