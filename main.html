@@ -1,6 +1,6 @@
 <div class="container">
 
-<div>
+<div ng-hide="data">
         <h1>Click a button to fetch user data</h1>
         <form name="searchUser" ng-submit="fetchEmployeeData()">
                 <input type="submit" value="Fetch employee data" class="btn btn-success" />
@@ -10,6 +10,7 @@
 <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
 <div class="col-12" ng-show="data">
+    <h1>That's employee data:</h1>
   <table class="table table-striped table-hover">
       <thead>
          
