@@ -5,6 +5,15 @@
   var EmployeeController = function ($scope) {
 
     $scope.message = "added";
+
+    $scope.submitForm = function(isValid){
+      if (isValid) {
+        alert('everything is fine');
+      }
+      else{
+        alert('form is not valid');
+      }
+    }
     
   };
 

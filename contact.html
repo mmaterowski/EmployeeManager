@@ -1,32 +1,36 @@
 <div class="container">
-    {{message}}
-        <h1>Here you can add an employee</h1>
+    <h1>Here you can add an employee</h1>
     <div class="mg">
-        <form name="contactForm" novalidate>
+        <form name="contactForm" ng-submit="submitForm(contactForm.$valid)" novalidate>
             <div class="form-group">
-                <label for="employeeName">Name</label>
-                <input type="text" name="employeeName" class="form-control" placeholder="Name" required="true">
+                <label>Name</label>
+                <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="text-danger">Please, fill in employee's name.</p>
+                <input type="text" name="name" ng-required="true" ng-model="name" class="form-control" placeholder="Name">
+
             </div>
             <div class="form-group">
                 <label for="emailInput">Surname</label>
-                <input type="text" name="employeeSurname" class="form-control" placeholder="Surname" required="true">
+                <p ng-show="contactForm.surname.$invalid && !contactForm.surname.$pristine" class="text-danger">Please fill employee's surname.</p>
+                <input type="text" name="surname" ng-model="surname" ng-required="true" class="form-control" placeholder="Surname">
             </div>
             <div class="form-group">
                 <label for="employeedSince">Working in company since</label>
-                <input type="text" name="employeedSince" class="form-control" placeholder="yyyy/mm/dd" required="true">
+                <p ng-show="contactForm.employeedSince.$invalid && !contactForm.employeedSince.$pristine" class="text-danger">This field is required!</p>
+                <input type="text" name="employeedSince" ng-model="employmentDate" class="form-control" ng-required="true" placeholder="yyyy/mm/dd">
             </div>
             <div class="form-group">
-                <label for="employeedSince">Number of vacation days</label>
-                <input type="text" name="vacationDays" class="form-control" placeholder="" required="true">
+                <label for="vacationDays">Number of vacation days</label>
+                <p ng-show="contactForm.vacationDays.$invalid && !contactForm.vacationDays.$pristine" class="text-danger">This field is required!</p>
+                <input type="text" name="vacationDays" class="form-control" ng-model="vacationDays" ng-required="true" placeholder="">
             </div>
             <div class="form-group">
                 <label for="employeedSince">Superior full name</label>
-                <input type="text" name="superiorName" class="form-control" placeholder="eg. John Smith" required="true">
+                <p ng-show="contactForm.superior.$invalid && !contactForm.superior.$pristine" class="text-danger">This field is required!</p>
+                <input type="text" name="superior" class="form-control" ng-model="superior" ng-required="true" placeholder="eg. John Smith">
             </div>
-            <div class="btn btn-group" ng-submit="addEmployee()">
-
-                <input type="submit" value="Submit" class="btn btn-success" />
-                <a href="#" class="btn btn-danger">Cancel</a>
+            <div class="btn btn-group">
+                <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success">Submit</button>
+                <!-- <a href="#" class="btn btn-danger">Cancel</a> !-->
             </div>
         </form>
     </div>
