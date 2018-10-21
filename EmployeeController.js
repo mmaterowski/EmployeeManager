@@ -2,12 +2,9 @@
 
   var app = angular.module("employeeManager");
 
-  var EmployeeController = function ($scope, $http) {
+  var EmployeeController = function ($scope) {
 
-    $scope.addEmployee = function () {
-
-      $scope.message = "added";
-    };
+    $scope.message = "added";
     
   };
 
