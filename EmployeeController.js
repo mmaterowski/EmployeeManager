@@ -13,9 +13,7 @@
     $scope.submitForm = function (contactForm) {
       var createdEmployee = createEmployee(contactForm);
       console.log(createdEmployee);
-      displayErrors(createdEmployee);
-
-
+      validateEmployeeObject(createdEmployee);
 
     };
 
@@ -35,16 +33,35 @@
       return correctlyFormattedDate;
     }
 
-    var displayErrors = function (employeeToVerify) {
-      checkForVacationDaysError(employeeToVerify.vacationDays);
-      checkForEmploymentDateError(employeeToVerify.employedSince);
+    var validateEmployeeObject = function (createdEmployee) {
+      var vacationError = checkForVacationDaysError(createdEmployee.vacationDays);
+      var dateError = checkForEmploymentDateError(createdEmployee.employedSince);
+      var supervisorError = checkForSupervisorErrors(createdEmployee);
+      if (!vacationError && !dateError &&!supervisorError) {
+        console.log("should return objecT");
+        //return object
+      } else {
+        displayErrors(vacationError, dateError,supervisorError);
+      }
+    };
+
+    var displayErrors = function (vacationError, dateError, supervisorError) {
+      if (vacationError) {
+        alert("Vacation days field is not a number, or it's less than 0")
+      } else if (dateError) {
+        alert("Employee can't start work in future year !");
+      } else if (supervisorError){
+        alert("Employee can't be it's own supervisor !");
+      }
     };
 
     var checkForVacationDaysError = function (vacationDays) {
       if (!areVacationDaysValid(vacationDays)) {
-        alert("Vacation days field is not a number, or it's less than 0")
+        return true;
       }
+      return false;
     };
+
     var areVacationDaysValid = function (vacationDays) {
       vacationDays = Number(vacationDays);
       if (typeof vacationDays === 'number') {
@@ -54,27 +71,35 @@
       }
     };
 
-    var checkForEmploymentDateError = function(date){
+    var checkForEmploymentDateError = function (date) {
       if (!isEmploymentDateValid(date)) {
-        alert("Date can't be in future year !");
+        return true;
       }
+      return false;
     };
 
-    var isEmploymentDateValid = function(date){
+    var isEmploymentDateValid = function (date) {
       var dateLength = date.length;
-      var yearOfEmployment = date.slice(dateLength-4,dateLength);
+      var yearOfEmployment = date.slice(dateLength - 4, dateLength);
 
       var today = new Date();
       var currentYear = today.getFullYear();
-      
-      if (yearOfEmployment>currentYear) {
+
+      if (yearOfEmployment > currentYear) {
         return false;
-      }
-      else{
+      } else {
         return true;
       }
-    }
+    };
 
+    var checkForSupervisorErrors = function (employee) {
+      var employeeFullName = employee.name + " " + employee.surname;
+      if (employeeFullName === employee.supervisor) {
+        return true;
+      } else {
+        return false;
+      }
+    };
     var onUsersFetched = function (employees) {
       supervisors = employees.data;
       $scope.selected.supervisorsArray = assingEmployeeNamesToArray(supervisors);
