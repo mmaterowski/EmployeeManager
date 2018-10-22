@@ -12,7 +12,6 @@
 
     $scope.submitForm = function (contactForm) {
       var createdEmployee = createEmployee(contactForm);
-      console.log(createdEmployee);
       validateEmployeeObject(createdEmployee);
 
     };
