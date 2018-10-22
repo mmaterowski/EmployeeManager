@@ -1,6 +1,6 @@
 (function(){
   
-  var app = angular.module("employeeManager",["ngRoute"]);
+  var app = angular.module("employeeManager",["ngRoute","ngSanitize", "ui.select"]);
   
   app.config(function($routeProvider){
     $routeProvider
@@ -14,5 +14,8 @@
       })
       .otherwise({redirectTo:"/main"});
   });
+
+
   
 }());
+
