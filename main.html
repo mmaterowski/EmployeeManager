@@ -2,15 +2,6 @@
 
 <!-- UI SELECT -->
 
-<ui-select ng-model="selectedItem" on-select="updateSelectedItem($select.selected)">
-  <ui-select-match  placeholder="Choose">{{$select.selected.name}}</ui-select-match>>
-    
-  <ui-select-choices repeat="item in (itemArray | filter: $select.search) track by item.id">
-     <div ng-bind-html="item.name"></div>
-  </ui-select-choices>
-</ui-select>
-<span>Selected: {name: {{selectedItem.name}}, id: {{selectedItem.id}} }</span>
-
     <div ng-hide="data">
         <h1>Click a button to fetch user data</h1>
         <form name="searchUser" ng-submit="fetchEmployeeData()">

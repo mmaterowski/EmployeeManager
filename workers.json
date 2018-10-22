@@ -3,48 +3,48 @@
         "id": 1,
         "name": "Ora",
         "surname": "Page",
-        "employedSince": "2018-01-01",
+        "employedSince": "10-Dec-2015",
         "vacationDays" : 4,
-        "supervisorName" : "Dolores Gill"
+        "supervisorName" : "Dave Adams"
     },
     {
         "id": 2,
         "name": "Antonio",
         "surname": "Morris",
-        "employedSince": "2018-03-23",
+        "employedSince": "16-Jan-2016",
         "vacationDays" : 5,
-        "supervisorName" : "Dolores Gill"
+        "supervisorName" : "Dave Adams"
     },
     {
         "id": 3,
         "name": "Andre",
         "surname": "Brewer",
-        "employedSince": "2018-07-19",
+        "employedSince": "23-Nov-2000",
         "vacationDays" : 10,
-        "supervisorName" : "Ethel Ingram"
+        "supervisorName" : "Dave Adams"
     },
     {
         "id": 4,
         "name": "Paulette",
         "surname": "Stewart",
-        "employedSince": "2017-03-01",
+        "employedSince": "15-Sep-2005",
         "vacationDays" : 2,
-        "supervisorName" : "Ethel Ingram"
+        "supervisorName" : "Dave Adams"
     },
     {
         "id": 5,
         "name": "Dave",
         "surname": "Adams",
-        "employedSince": "2018-09-10",
+        "employedSince": "12-Feb-2018",
         "vacationDays" : 15,
-        "supervisorName" : "Ethel Ingram"
+        "supervisorName" : "Ora Page"
     },
     {
         "id": 6,
         "name": "Elisa",
         "surname": "Santos",
-        "employedSince": "2017-12-10",
+        "employedSince": "16-Jan-2008",
         "vacationDays" : 15,
-        "supervisorName" : "Ethel Ingram"
+        "supervisorName" : "Ora Page"
     }
 ]

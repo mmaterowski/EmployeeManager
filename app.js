@@ -1,6 +1,6 @@
 (function(){
   
-  var app = angular.module("employeeManager",["ngRoute","ngSanitize", "ui.select"]);
+  var app = angular.module("employeeManager",["ngRoute","ngSanitize", "ui.select",'720kb.datepicker']);
   
   app.config(function($routeProvider){
     $routeProvider
