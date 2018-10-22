@@ -39,12 +39,25 @@
       var supervisorError = checkForSupervisorErrors(createdEmployee);
       if (!vacationError && !dateError &&!supervisorError) {
         console.log("should return objecT");
-        //return object
+        saveEmployeeToDatabase(createdEmployee,supervisors);
       } else {
         displayErrors(vacationError, dateError,supervisorError);
       }
     };
 
+
+    var saveEmployeeToDatabase = function(employeeToSave,jsonObject){
+        jsonObject= JSON.stringify(jsonObject);
+        jsonObject=jsonObject.slice(0,jsonObject.length-1);
+        employeeData = JSON.stringify(employeeToSave);
+        jsonObject+=","+employeeData+"]";  
+        jsonObject=JSON.parse(jsonObject);
+
+        //serwis który trzyma w pamięci liste, dać dependency dla obu controllerów
+        //uCRUDzić go
+
+    };
+    
     var displayErrors = function (vacationError, dateError, supervisorError) {
       if (vacationError) {
         alert("Vacation days field is not a number, or it's less than 0")
