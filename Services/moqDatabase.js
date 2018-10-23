@@ -110,7 +110,7 @@
             getEmployees: getEmployees,
             addEmployee: addEmployee,
             deleteEmployee: deleteEmployee,
-            editEmployee: editEmployee
+         //   editEmployee: editEmployee
         };
     };
     var module = angular.module("employeeManager");
