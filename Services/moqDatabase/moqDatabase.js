@@ -2,13 +2,14 @@
 
     var moqDatabase = function () {
 
-        var employees = [{
+        var employees = [
+            {
                 id: 1,
-                nme: "Ora",
-                surnme: "Page",
-                employedSice: "10-Dec-2015",
+                name: "Ora",
+                surname: "Page",
+                employedSince: "10-Dec-2015",
                 vacationDays: 4,
-                supervisorNme: "Dave Adams"
+                supervisorName: "Dave Adams"
             },
             {
                 id: 2,
@@ -53,18 +54,46 @@
         ];
 
         var getEmployees = function () {
-            return employees
+            return employees;
         };
 
+
         var addEmployee = function (employee) {
-            employeesData.push(employee);
+            console.log("hello from addEmployee");
+            console.log("value of employee. id:" + employee.id);
+            employee.id = assignEmployeeIndex();
+            console.log("employee id after assigning r andom number:" + employee.id);
+            employees.push(employee);
+        };
+
+        var assignEmployeeIndex = function () {
+            while (true) {
+                var indexNumber = generateRandomNumber();
+                if (doesCollectionContainsIndex(indexNumber)) {
+                    return indexNumber;
+                } else {
+
+                    continue;
+                }
+            }
+        };
+
+        var generateRandomNumber = function () {
+            return Math.trunc((Math.random() * 1000));
+        };
+
+        var doesCollectionContainsIndex = function (index) {
+            var item = employees.filter(function (employee) {
+                return (employee.id === index);
+            })
+            return item;
         };
 
         var deleteEmployee = function (employeeId) {
             var foundEmployee = employees.filter(function (employee) {
                 return employee.id === employeeId;
             });
-            var indexOfFoundEmployee = employees.indexof(foundEmployee);
+            var indexOfFoundEmployee = employees.indexOf(foundEmployee);
 
             employees.splice(indexOfFoundEmployee, 1);
         };
@@ -77,7 +106,7 @@
             employees[indexOfFoundEmployee].name = employee.vacationDays;
             employees[indexOfFoundEmployee].name = employee.employedSice;
             employees[indexOfFoundEmployee].name = employee.supervisorName;
-        }
+        };
 
         return {
             getEmployees: getEmployees,

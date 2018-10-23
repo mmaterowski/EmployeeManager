@@ -1,13 +1,5 @@
 <div class="container">
 
-<!-- UI SELECT -->
-
-    <div ng-hide="data">
-        <h1>Click a button to fetch user data</h1>
-        <form name="searchUser" ng-submit="fetchEmployeeData()">
-            <input type="submit" value="Fetch employee data" class="btn btn-success" />
-        </form>
-    </div>
 
     <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
@@ -17,12 +9,14 @@
             <thead>
                 </tr>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Surname</th>
                     <th scope="col">Started working on:</th>
                     <th scope="col">Supervisor</th>
                     <th scope="col">Vacation Days</th>
+                       
+
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +27,13 @@
                     <td>{{employee.employedSince}}</td>
                     <td>{{employee.supervisorName}}</td>
                     <td>{{employee.vacationDays}}</td>
+                    <td>
+                        <div class="row">
+                                <div class="btn btn-info">Edit</div>
+                                <button class="btn btn-danger" ng-click="deleteEmployee(employee.id)">Remove</div>
+                        </div>
+                       
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -42,12 +43,6 @@
             <a href="#!contact">
                 <div class="btn btn-success">Add employee</div>
             </a>
-        </div>
-        <div class=col-xs-1>
-            <h2></h2>
-        </div>
-        <div class="col-md-2 col-xs-12">
-            <div class="btn btn-danger">Remove employee</div>
         </div>
     </div>
 </div>

@@ -2,104 +2,87 @@
 
   var app = angular.module("employeeManager");
 
-  var EmployeeController = function ($scope, $http, moqDatabase) {
+  var EmployeeController = function ($scope, moqDatabase, $window) {
 
-    $scope.message = "added";
-    $scope.supervisors = "";
     $scope.selected = {};
-    $scope.supervisorData = '';
 
-    // trying to use my service
-    (function(){
-      var data =moqDatabase.getEmployees();
-      console.log(data);
+ 
 
-
-    }());
-
-    // end
     $scope.submitForm = function (contactForm) {
-      console.log("insideMoqDatabase")
+      console.log($scope.selected.selectedSupervisor); 
+      // console.log("hello from submit form");
+      // console.log("selected:" + selected);
+      // console.log("selected.selectedSupervisor:" + $scope.selectedSupervisor)
+      // console.log("contactForm.selected:" + contactForm.selected);
+      // console.log("contactForm.selectedSupervisor:" + contactForm.selectedSupervisor);
+      // console.log("contactForm.selected.selectedSupervisor:" + contactForm.selected.selectedSupervisor);
+
+
       var createdEmployee = createEmployee(contactForm);
-      validateEmployeeObject(createdEmployee);
-
-    };
-
-    var createEmployee = function (form) {
-      return {
-        name: form.name.$viewValue,
-        surname: form.surname.$viewValue,
-        employedSince: dateParser(form.employedSince.$viewValue),
-        vacationDays: form.vacationDays.$viewValue,
-        supervisor: supervisorData
+      var isEmployeeValid = validateEmployee(createdEmployee);
+      if (isEmployeeValid) {
+        moqDatabase.addEmployee(createdEmployee);
+        $window.location.href = '#main';
+        console.log(moqDatabase.getEmployees());
       }
     };
 
-    var dateParser = function (dateObject) {
-      var dateInfo = dateObject.split(" ");
-      var correctlyFormattedDate = dateInfo[2] + "-" + dateInfo[1] + "-" + dateInfo[3];
-      return correctlyFormattedDate;
+    var createEmployee = function (employee) {
+      return {
+        id: 0,
+        name: employee.name.$viewValue,
+        surname: employee.surname.$viewValue,
+        employedSince: parseDate(employee.employedSince.$viewValue),
+        vacationDays: employee.vacationDays.$viewValue,
+        supervisorName: $scope.selected.selectedSupervisor.name
+      }
+    };
+
+    var parseDate = function (date) {
+      if (date) {
+        var dateInfo = date.split(" ");
+        var correctlyFormattedDate = dateInfo[2] + "-" + dateInfo[1] + "-" + dateInfo[3];
+        return correctlyFormattedDate;
+      } else {
+        alert("date related error!");
+      }
+
     }
 
-    var validateEmployeeObject = function (createdEmployee) {
-      var vacationError = checkForVacationDaysError(createdEmployee.vacationDays);
-      var dateError = checkForEmploymentDateError(createdEmployee.employedSince);
-      var supervisorError = checkForSupervisorErrors(createdEmployee);
-      if (!vacationError && !dateError &&!supervisorError) {
-        console.log("should return objecT");
-        saveEmployeeToDatabase(createdEmployee,supervisors);
+    var validateEmployee = function (createdEmployee) {
+      var vacationError = isThereVacationDaysError(createdEmployee.vacationDays);
+      var dateError = isThereEmploymentDateError(createdEmployee.employedSince);
+      var supervisorError = isThereSupervisorError(createdEmployee);
+
+      if (!vacationError && !dateError && !supervisorError) {
+        return true;
+
       } else {
-        displayErrors(vacationError, dateError,supervisorError);
+        displayErrors(vacationError, dateError, supervisorError);
+        return false
       }
     };
 
-
-    var saveEmployeeToDatabase = function(employeeToSave,jsonObject){
-        jsonObject= JSON.stringify(jsonObject);
-        jsonObject=jsonObject.slice(0,jsonObject.length-1);
-        employeeData = JSON.stringify(employeeToSave);
-        jsonObject+=","+employeeData+"]";  
-        jsonObject=JSON.parse(jsonObject);
-
-        //serwis który trzyma w pamięci liste, dać dependency dla obu controllerów
-        //uCRUDzić go
-
-    };
-    
     var displayErrors = function (vacationError, dateError, supervisorError) {
       if (vacationError) {
         alert("Vacation days field is not a number, or it's less than 0")
       } else if (dateError) {
         alert("Employee can't start work in future year !");
-      } else if (supervisorError){
+      } else if (supervisorError) {
         alert("Employee can't be it's own supervisor !");
       }
     };
 
-    var checkForVacationDaysError = function (vacationDays) {
-      if (!areVacationDaysValid(vacationDays)) {
-        return true;
-      }
-      return false;
-    };
-
-    var areVacationDaysValid = function (vacationDays) {
+    var isThereVacationDaysError = function (vacationDays) {
       vacationDays = Number(vacationDays);
       if (typeof vacationDays === 'number') {
-        return (vacationDays >= 0);
+        return !(vacationDays >= 0);
       } else {
         return true;
       }
     };
 
-    var checkForEmploymentDateError = function (date) {
-      if (!isEmploymentDateValid(date)) {
-        return true;
-      }
-      return false;
-    };
-
-    var isEmploymentDateValid = function (date) {
+    var isThereEmploymentDateError = function (date) {
       var dateLength = date.length;
       var yearOfEmployment = date.slice(dateLength - 4, dateLength);
 
@@ -107,13 +90,13 @@
       var currentYear = today.getFullYear();
 
       if (yearOfEmployment > currentYear) {
-        return false;
-      } else {
         return true;
+      } else {
+        return false;
       }
     };
 
-    var checkForSupervisorErrors = function (employee) {
+    var isThereSupervisorError = function (employee) {
       var employeeFullName = employee.name + " " + employee.surname;
       if (employeeFullName === employee.supervisor) {
         return true;
@@ -121,16 +104,12 @@
         return false;
       }
     };
-    var onUsersFetched = function (employees) {
-      supervisors = employees.data;
-      $scope.selected.supervisorsArray = assingEmployeeNamesToArray(supervisors);
-    };
 
-    var assingEmployeeNamesToArray = function (supervisors) {
+    var assingEmployeeNamesToArray = function (employeesData) {
       var supervisorsArray = [];
-      for (var i = 0; i < supervisors.length; i++) {
-        supervisorName = supervisors[i].name;
-        supervisorSurname = supervisors[i].surname;
+      for (var i = 0; i < employeesData.length; i++) {
+        supervisorName = employeesData[i].name;
+        supervisorSurname = employeesData[i].surname;
         supervisorsArray.push({
           id: i,
           name: supervisorName + " " + supervisorSurname
@@ -139,20 +118,13 @@
       return supervisorsArray;
     };
 
-    var onError = function () {
-      $scope.error = "Error occured";
-    };
-
-    $scope.fetchSupervisorData = (function () {
-      return $http.get("/workers.json")
-        .then(onUsersFetched, onError)
+    getSupervisors = (function () {
+      var employees = moqDatabase.getEmployees();
+      $scope.supervisorsArray = assingEmployeeNamesToArray(employees);
     })();
 
-    $scope.updateSelectedItem = function (selectedItem) {
-      supervisorData = selectedItem.name;
-    };
 
   };
 
-  app.controller("EmployeeController",EmployeeController);
+  app.controller("EmployeeController", EmployeeController);
 }());

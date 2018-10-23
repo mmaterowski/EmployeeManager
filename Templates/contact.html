@@ -24,7 +24,7 @@
                 </datepicker>
                 <p ng-show="contactForm.employedSince.$invalid && !contactForm.employedSince.$pristine" class="text-danger">This
                     field is required!</p>
-                    
+
             </div>
             <div class="form-group">
 
@@ -36,9 +36,9 @@
             </div>
             <div class="form-group">
                 <label for="supervisor">Supervisor name</label>
-                <ui-select ng-model="selectedSupervisor" on-select="updateSelectedItem(selectedSupervisor)" required="true">
+                <ui-select ng-model="selected.selectedSupervisor" required="true">
                     <ui-select-match placeholder="Choose">{{$select.selected.name}}</ui-select-match>>
-                    <ui-select-choices repeat="item in selected.supervisorsArray">
+                    <ui-select-choices repeat="item in supervisorsArray">
                         <div ng-bind-html="item.name"></div>
                     </ui-select-choices>
                 </ui-select>
@@ -46,7 +46,7 @@
 
             <div class="btn btn-group">
                 <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success">Submit</button>
-                <!-- <a href="#" class="btn btn-danger">Cancel</a> !-->
+                    <a href="#" class="btn btn-danger">Cancel</a>
             </div>
         </form>
     </div>
