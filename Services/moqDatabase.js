@@ -59,10 +59,7 @@
 
 
         var addEmployee = function (employee) {
-            console.log("hello from addEmployee");
-            console.log("value of employee. id:" + employee.id);
             employee.id = assignEmployeeIndex();
-            console.log("employee id after assigning r andom number:" + employee.id);
             employees.push(employee);
         };
 

@@ -8,10 +8,8 @@
       $scope.data = moqDatabase.getEmployees();
     }());
 
-
     $scope.deleteEmployee = function (employeeID) {
       moqDatabase.deleteEmployee(employeeID);
-
     };
   }
   app.controller("MainController", MainController);
