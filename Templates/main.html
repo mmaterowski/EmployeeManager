@@ -4,7 +4,7 @@
     <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
     <div class="col-12" ng-show="data">
-        <h1>That's employee data</h1>
+        <h1>Employee data</h1>
         <table class="table table-striped table-hover">
             <thead>
                 </tr>
@@ -15,8 +15,6 @@
                     <th scope="col">Started working on:</th>
                     <th scope="col">Supervisor</th>
                     <th scope="col">Vacation Days</th>
-                       
-
                 </tr>
             </thead>
             <tbody>
@@ -29,10 +27,7 @@
                     <td>{{employee.vacationDays}}</td>
                     <td>
                         <div class="row">
-                                <div class="btn btn-info">Edit</div>
-                                <button class="btn btn-danger" ng-click="deleteEmployee(employee.id)">Remove</div>
-                        </div>
-                       
+                            <button class="btn btn-danger" ng-click="deleteEmployee(employee.id)">Remove</div>
                     </td>
                 </tr>
             </tbody>

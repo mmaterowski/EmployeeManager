@@ -66,7 +66,7 @@
         var assignEmployeeIndex = function () {
             while (true) {
                 var indexNumber = generateRandomNumber();
-                if (doesCollectionContainsIndex(indexNumber)) {
+                if (doesCollectionContainIndex(indexNumber)) {
                     return indexNumber;
                 } else {
 
@@ -79,7 +79,7 @@
             return Math.trunc((Math.random() * 1000));
         };
 
-        var doesCollectionContainsIndex = function (index) {
+        var doesCollectionContainIndex = function (index) {
             var item = employees.filter(function (employee) {
                 return (employee.id === index);
             })
@@ -95,15 +95,16 @@
             employees.splice(indexOfFoundEmployee, 1);
         };
 
-        var editEmployee = function (employee) {
-            var indexOfFoundEmployee = employees.indexof(employee);
+        //NOT IMPLEMENTED IN VIEW
+        // var editEmployee = function (employee) {
+        //     var indexOfFoundEmployee = employees.indexof(employee);
 
-            employees[indexOfFoundEmployee].name = employee.name;
-            employees[indexOfFoundEmployee].name = employee.surname;
-            employees[indexOfFoundEmployee].name = employee.vacationDays;
-            employees[indexOfFoundEmployee].name = employee.employedSice;
-            employees[indexOfFoundEmployee].name = employee.supervisorName;
-        };
+        //     employees[indexOfFoundEmployee].name = employee.name;
+        //     employees[indexOfFoundEmployee].name = employee.surname;
+        //     employees[indexOfFoundEmployee].name = employee.vacationDays;
+        //     employees[indexOfFoundEmployee].name = employee.employedSice;
+        //     employees[indexOfFoundEmployee].name = employee.supervisorName;
+        // };
 
         return {
             getEmployees: getEmployees,

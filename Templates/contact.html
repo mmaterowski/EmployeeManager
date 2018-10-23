@@ -7,7 +7,6 @@
                 <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="text-danger">Please, fill
                     in employee's name.</p>
                 <input type="text" name="name" ng-required="true" ng-model="name" class="form-control" placeholder="Name">
-
             </div>
             <div class="form-group">
                 <label for="emailInput">Surname</label>
@@ -24,7 +23,6 @@
                 </datepicker>
                 <p ng-show="contactForm.employedSince.$invalid && !contactForm.employedSince.$pristine" class="text-danger">This
                     field is required!</p>
-
             </div>
             <div class="form-group">
 
@@ -43,10 +41,9 @@
                     </ui-select-choices>
                 </ui-select>
             </div>
-
             <div class="btn btn-group">
                 <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success">Submit</button>
-                    <a href="#" class="btn btn-danger">Cancel</a>
+                <a href="#" class="btn btn-danger">Cancel</a>
             </div>
         </form>
     </div>
