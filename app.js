@@ -5,11 +5,11 @@
   app.config(function($routeProvider){
     $routeProvider
       .when("/main",{
-        templateUrl: "main.html",
+        templateUrl: "Templates/main.html",
         controller: "MainController"
       })
       .when("/contact",{
-        templateUrl: "contact.html",
+        templateUrl: "Templates/contact.html",
         controller: "EmployeeController"
       })
       .otherwise({redirectTo:"/main"});
