@@ -10,20 +10,12 @@
 
     $scope.submitForm = function (contactForm) {
       console.log($scope.selected.selectedSupervisor); 
-      // console.log("hello from submit form");
-      // console.log("selected:" + selected);
-      // console.log("selected.selectedSupervisor:" + $scope.selectedSupervisor)
-      // console.log("contactForm.selected:" + contactForm.selected);
-      // console.log("contactForm.selectedSupervisor:" + contactForm.selectedSupervisor);
-      // console.log("contactForm.selected.selectedSupervisor:" + contactForm.selected.selectedSupervisor);
-
 
       var createdEmployee = createEmployee(contactForm);
       var isEmployeeValid = validateEmployee(createdEmployee);
       if (isEmployeeValid) {
         moqDatabase.addEmployee(createdEmployee);
         $window.location.href = '#main';
-        console.log(moqDatabase.getEmployees());
       }
     };
 
@@ -98,7 +90,7 @@
 
     var isThereSupervisorError = function (employee) {
       var employeeFullName = employee.name + " " + employee.surname;
-      if (employeeFullName === employee.supervisor) {
+      if (employeeFullName === employee.supervisorName) {
         return true;
       } else {
         return false;
