@@ -2,15 +2,24 @@
 
   var app = angular.module("employeeManager");
 
-  var EmployeeController = function ($scope, $http) {
+  var EmployeeController = function ($scope, $http, moqDatabase) {
 
     $scope.message = "added";
     $scope.supervisors = "";
     $scope.selected = {};
     $scope.supervisorData = '';
 
+    // trying to use my service
+    (function(){
+      var data =moqDatabase.getEmployees();
+      console.log(data);
 
+
+    }());
+
+    // end
     $scope.submitForm = function (contactForm) {
+      console.log("insideMoqDatabase")
       var createdEmployee = createEmployee(contactForm);
       validateEmployeeObject(createdEmployee);
 
@@ -145,5 +154,5 @@
 
   };
 
-  app.controller("EmployeeController", EmployeeController);
+  app.controller("EmployeeController",EmployeeController);
 }());
