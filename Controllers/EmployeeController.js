@@ -36,7 +36,6 @@
       } else {
         alert("date related error!");
       }
-
     }
 
     getSupervisors = (function () {
