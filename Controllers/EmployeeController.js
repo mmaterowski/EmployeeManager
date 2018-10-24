@@ -16,8 +16,8 @@
       };
     };
 
-    $scope.submitForm = function (contactForm) {
-      var createdEmployee = createEmployee(contactForm);
+    $scope.submitForm = function () {
+      var createdEmployee = createEmployee();
       var isEmployeeValid = errorVerifier.verifyEmployee(createdEmployee);
       if (isEmployeeValid) {
         moqDatabase.addEmployee(createdEmployee);
@@ -25,14 +25,14 @@
       }
     };
 
-    function createEmployee(employee) {
-      console.log($scope.name);
+    function createEmployee() {
+
       return {
         id: 0,
-        name: employee.name.$viewValue,
-        surname: employee.surname.$viewValue,
+        name: $scope.name,
+        surname: $scope.surname,
         employedSince: parseDate($scope.date),
-        vacationDays: employee.vacationDays.$viewValue,
+        vacationDays: $scope.vacationDays,
         supervisorName: $scope.selected.selectedSupervisor.name
       }
     };
