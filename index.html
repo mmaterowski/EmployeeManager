@@ -17,7 +17,10 @@
     crossorigin="anonymous">
 
   <link rel="stylesheet" href="style.css" />
+
   <script src="app.js"></script>
+  <script src="Components/employee-table.component.js"></script>
+  <script src="Components/employee-form.component.js"></script>
   <script src="Services/moqDatabase.js"></script>
   <script src="Services/errorVerifier.js"></script>
   <script src="Controllers/MainController.js"></script>
@@ -27,7 +30,8 @@
 </head>
 
 <body>
-  <div ng-view></div>
+<employee-table></employee-table>
+<employee-form></employee-form>
 </body>
 
 
