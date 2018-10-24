@@ -1,2 +1,37 @@
 /* Styles go here */
 
+hr {
+    height: 3px;
+    margin-left: 0px;
+    margin-bottom:10px;
+  }
+  .hr-warning{
+    background-image: -webkit-linear-gradient(left, rgba(210,105,30,.8), rgba(210,105,30,.6), rgba(0,0,0,0));
+  }
+  .hr-success{
+    background-image: -webkit-linear-gradient(left, rgba(15,157,88,.8), rgba(15, 157, 88,.6), rgba(0,0,0,0));
+  }
+  .hr-primary{
+    background-image: -webkit-linear-gradient(left, #2aabd2, #5bc0de, rgba(0,0,0,0));
+  }
+  .hr-danger{
+    background-image: -webkit-linear-gradient(left, rgba(244,67,54,.8), rgba(244,67,54,.6), rgba(0,0,0,0));
+  }
+  .hr-danger-revert{
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(244,67,54,.6), rgba(244,67,54,.8));
+  }
+  body, html {
+    height: 100%;
+  }
+  .bg {
+    /* The image used */
+    background-image: url("background.jpg");
+  
+    /* Half height */
+    height: 50%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

@@ -1,4 +1,7 @@
-    <h1>Here you can add an employee</h1>
+   <div class="col-xs-12">
+    <h1>Add an employee</h1>
+    <hr class="hr-success" />
+   </div>
         <form name="contactForm" ng-submit="submitForm(contactForm)" novalidate>
             <div class="form-group">
                 <label>Name</label>
@@ -15,7 +18,7 @@
             </div>
             <div class="form-group" ng-init="init()">
                 <label for="employedSince">Working in company since </label>
-                <div class="input-group" style="width:200px">
+                <div class="input-group">
                     <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="date" is-open="isDatepickerOpen"
                         datepicker-options="datepickerOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                     <span class="input-group-btn">
