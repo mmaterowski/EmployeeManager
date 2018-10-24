@@ -1,6 +1,7 @@
 (function () {
 
     var moqDatabase = function () {
+    let index=10;
 
         var employees = [
             {
@@ -59,31 +60,9 @@
 
 
         var addEmployee = function (employee) {
-            employee.id = assignEmployeeIndex();
+            employee.id = index;
             employees.push(employee);
-        };
-
-        var assignEmployeeIndex = function () {
-            while (true) {
-                var indexNumber = generateRandomNumber();
-                if (doesCollectionContainIndex(indexNumber)) {
-                    return indexNumber;
-                } else {
-
-                    continue;
-                }
-            }
-        };
-
-        var generateRandomNumber = function () {
-            return Math.trunc((Math.random() * 1000));
-        };
-
-        var doesCollectionContainIndex = function (index) {
-            var item = employees.filter(function (employee) {
-                return (employee.id === index);
-            })
-            return item;
+            index++;
         };
 
         var deleteEmployee = function (employeeId) {

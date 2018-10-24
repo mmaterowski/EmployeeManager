@@ -41,7 +41,7 @@
       } else {
         return false
       }
-    };
+    }
 
     function isVacationDaysGreaterThanZero(vacationDays) {
       return vacationDays >= 0;
@@ -63,7 +63,7 @@
       } else {
         return false;
       }
-    };
+    }
 
     var isThereSupervisorError = function (employee) {
       return isEmployeeItsOwnSupervisor(employee);
@@ -76,7 +76,7 @@
       } else {
         return false;
       }
-    };
+    }
     
     return {
       verifyEmployee: verifyEmployee
