@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="employeeManager">
+<html ng-app="employeeManager" ng-cloak>
 
 <head>
   <script data-require="angular.js@*" data-semver="4.0.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
@@ -19,20 +19,30 @@
   <link rel="stylesheet" href="style.css" />
 
   <script src="app.js"></script>
+  <script src="Components/employee-manager.component.js"></script>
   <script src="Components/employee-table.component.js"></script>
   <script src="Components/employee-form.component.js"></script>
+  <script src="Components/employee-log.component.js"></script>
+  <script src="Components/page-footer.component.js"></script>
+
   <script src="Services/moqDatabase.js"></script>
   <script src="Services/errorVerifier.js"></script>
+
+  <script src="Controllers/LogController.js"></script>
   <script src="Controllers/MainController.js"></script>
   <script src="Controllers/EmployeeController.js"></script>
+  <script src="Controllers/FooterController.js"></script>
 
 
 </head>
 
 <body>
-<employee-table></employee-table>
-<employee-form></employee-form>
+<employee-manager-app></employee-manager-app>
+
+  
 </body>
+
+
 
 
 </html>

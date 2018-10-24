@@ -2,7 +2,7 @@
 
   var app = angular.module("employeeManager");
 
-  var EmployeeController = function ($scope, $window, moqDatabase, errorVerifier,uibDateParser) {
+  var EmployeeController = function ($scope, $window, moqDatabase, errorVerifier) {
 
     $scope.selected = {};
     $scope.supervisorsArray = '';

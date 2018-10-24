@@ -2,8 +2,8 @@
 
     angular.module("employeeManager").component("employeeLog",{
         controllerAs: "vm",
-        controller: "",
-        templateUrl : "Components/employee-log.html"
+        controller: "LogController",
+        templateUrl : "Components/employee-log.component.html"
     })
 
 }());
