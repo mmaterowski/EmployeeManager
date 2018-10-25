@@ -3,7 +3,10 @@
   var app = angular.module("employeeManager");
 
   var EmployeeController = function ($scope, $window, moqDatabase, errorVerifier) {
-
+    var vm = this;
+    vm.$onInit = function(){
+      vm.message =  "frominit";
+    }
     $scope.selected = {};
     $scope.supervisorsArray = '';
 
@@ -37,8 +40,6 @@
       }
     };
 
-
-
     function parseDate(date) {
       if (date) {
         date = date.toString();
@@ -67,7 +68,6 @@
       }
       return supervisorsArray;
     };
-
   };
 
   app.controller("EmployeeController", EmployeeController);

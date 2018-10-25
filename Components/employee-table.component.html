@@ -19,14 +19,14 @@
             </thead>
             <tbody>
                 <tr ng-repeat="employee in data">
-                    <th scope="row">{{employee.id}}</th>
-                    <td>{{employee.name}}</td>
+                    <th scope="row" >{{employee.id}}</th>
+                    <td >{{employee.name}}</td>
                     <td>{{employee.surname}}</td>
                     <td>{{employee.employedSince}}</td>
                     <td>{{employee.supervisorName}}</td>
                     <td>{{employee.vacationDays}}</td>
                     <td>
-                            <button class="btn btn-sm btn-info" ng-click="edit(employee.id)">&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp  </button>
+                            <button class="btn btn-sm btn-info" ng-click="">&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp  </button>
                             <button class="btn btn-sm btn-danger" ng-click="deleteEmployee(employee.id)">Remove</button>
                     </td>
                 </tr>
