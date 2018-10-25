@@ -2,8 +2,9 @@
 
     angular.module("employeeManager").component("employeeTable",{
         bindings: {
-            propertyBinding : "<"
+            employeeName: "<"
         },
+        controllerAs:"vm",
         controller: "MainController",
         
         templateUrl : "Components/employee-table.component.html"

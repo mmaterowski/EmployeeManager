@@ -5,7 +5,7 @@
   app.config(function ($stateProvider) {
     var states = [{
         name: 'table',
-        url: '',
+        url: '/',
         template: '<employee-table></employee=table>'
       },
       {
@@ -15,8 +15,13 @@
       },
       {
         name: 'details',
-        url: '/employeeDetails',
-        template: '<employee-details></employee-details'
+        url: '/{employeeName}',
+        resolve: {
+          employeeName: function($stateParams){
+            return $stateParams.employeeName;
+          }
+        },
+        template: '<employee-details employee-name="$resolve.employeeName"></employee-details>',
       }
     ];
     states.forEach(function (state) {
@@ -24,16 +29,5 @@
     })
 
   });
-  // app.config(function($routeProvider){
-  //   $routeProvider
-  //     .when("/main",{
-  //       templateUrl: "Templates/main.html",
-  //       controller: "MainController"
-  //     })
-  //     .when("/contact",{
-  //       templateUrl: "Templates/contact.html",
-  //       controller: "EmployeeController"
-  //     })
-  //     .otherwise({redirectTo:"/main"});
-  // });
+
 }());
