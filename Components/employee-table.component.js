@@ -2,7 +2,8 @@
 
     angular.module("employeeManager").component("employeeTable",{
         bindings: {
-            employeeName: "<"
+            employeeName: "<",
+            employeeId: "<"
         },
         controllerAs:"vm",
         controller: "MainController",
@@ -11,3 +12,6 @@
     })
 
 }());
+
+
+

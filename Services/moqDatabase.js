@@ -70,9 +70,17 @@
                 return employee.id === employeeId;
             });
             var indexOfFoundEmployee = employees.indexOf(foundEmployee);
-
             employees.splice(indexOfFoundEmployee, 1);
         };
+
+        var getEmployeeById = function (employeeId){
+
+            var foundEmployee = employees.filter(function (employee) {
+                return employee.id === employeeId;
+            });
+            console.log(foundEmployee);
+            return foundEmployee;
+        }
 
         //NOT IMPLEMENTED IN VIEW
         // var editEmployee = function (employee) {
@@ -89,6 +97,7 @@
             getEmployees: getEmployees,
             addEmployee: addEmployee,
             deleteEmployee: deleteEmployee,
+            getEmployeeById : getEmployeeById
          //   editEmployee: editEmployee
         };
     };

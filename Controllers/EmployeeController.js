@@ -2,15 +2,33 @@
 
   var app = angular.module("employeeManager");
 
-  var EmployeeController = function ($scope, $window, moqDatabase, errorVerifier) {
+  var EmployeeController = function ($scope, $window, moqDatabase, errorVerifier, $routeParams) {
     var vm = this;
-    vm.$onInit = function(){
-      vm.message =  "frominit";
+    vm.$onInit = function () {
+      console.log($routeParams);
     }
+    $scope.idFromUrl = $routeParams.employeeId;
+
+    //   $scope.$on('employeeEdit', function () {
+    //     console.log($routeParams.employeeId);
+    //     fillForm($routeParams.employeeId);
+    // });
+
+    //   function fillForm(employeeId){
+    //     console.log("employee id from fillForm:" + employeeId)
+    //     var foundEmployee = moqDatabase.getEmployeeById(employeeId);
+    //     console.log(foundEmployee);
+    //     $scope.name = foundEmployee.name;
+    //     $scope.surname = foundEmployee.surname;
+    //    // employedSince: parseDate($scope.date),
+    //     $scope.vacationDays = foundEmployee.vacationDays
+    //     $scope.selected.selectedSupervisor.name = foundEmployee.supervisorName
+    //   }
+
     $scope.selected = {};
     $scope.supervisorsArray = '';
 
-    $scope.init = function(){
+    $scope.init = function () {
       $scope.date = null;
       $scope.format = 'yyyy/MM/dd';
       $scope.datepickerOptions = {
