@@ -1,36 +1,32 @@
-<div class="col-xs-12">
-    <h1>Your employees</h1>
-    <hr class="hr-primary"/>
+<div ng-show="data">
+    <table class="table table-striped table-hover">
+        <thead>
+            </tr>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Started working on:</th>
+                <th scope="col">Supervisor</th>
+                <th scope="col">Vacation Days</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in data">
+                <th scope="row">{{employee.id}}</th>
+                <td>{{employee.name}}</td>
+                <td>{{employee.surname}}</td>
+                <td>{{employee.employedSince}}</td>
+                <td>{{employee.supervisorName}}</td>
+                <td>{{employee.vacationDays}}</td>
+                <td>
+                    <button class="btn btn-sm btn-success" ui-sref='details' href>Details&nbsp&nbsp</button>
+                    <button class="btn btn-sm btn-info" ui-sref='home'>&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp </button>
+                    <button class="btn btn-sm btn-danger" ng-click="deleteEmployee(employee.id)">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-   <div class="alert alert-danger" ng-show="error">{{error}}</div>
-    <div ng-show="data">
-        <table class="table table-striped table-hover">
-            <thead>
-                </tr>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Surname</th>
-                    <th scope="col">Started working on:</th>
-                    <th scope="col">Supervisor</th>
-                    <th scope="col">Vacation Days</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="employee in data">
-                    <th scope="row" >{{employee.id}}</th>
-                    <td >{{employee.name}}</td>
-                    <td>{{employee.surname}}</td>
-                    <td>{{employee.employedSince}}</td>
-                    <td>{{employee.supervisorName}}</td>
-                    <td>{{employee.vacationDays}}</td>
-                    <td>
-                            <button class="btn btn-sm btn-info" ng-click="">&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp  </button>
-                            <button class="btn btn-sm btn-danger" ng-click="deleteEmployee(employee.id)">Remove</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
