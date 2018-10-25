@@ -3,6 +3,7 @@
     
     var LogController = function (){
         var vm = this;
+        
         vm.message = "All employees are happy";
     };
 
