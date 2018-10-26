@@ -1,40 +1,13 @@
 (function () {
 
-  var app = angular.module("employeeManager", ["ui.router", "ngSanitize", "ui.select", 'ui.bootstrap','ngRoute']);
+  var app = angular.module("employeeManager", ["ngSanitize", "ui.select", 'ui.bootstrap', 'ngRoute']);
 
-  app.config(function ($stateProvider, $routeProvider) {
-    // var states = [{
-    //     name: 'table',
-    //     url: '/',
-    //     template: '<employee-table></employee=table>'
-    //   },
-    //   {
-    //     name: 'edit',
-    //     url: '/edit/{employeeId}',
-    //     resolve: {
-    //       employeeId: function ($stateParams) {
-    //         return $stateParams.employeeId;
-    //       }
-    //     }
-    //   },
-    //   {
-    //     name: 'details',
-    //     url: '/{employeeName}',
-    //     resolve: {
-    //       employeeName: function ($stateParams) {
-    //         return $stateParams.employeeName;
-    //       }
-    //     },
-    //     template: '<employee-details employee-name="$resolve.employeeName"></employee-details>',
-    //   }
-    // ];
+  app.config( function ($routeProvider) {
 
-    $routeProvider.when('/edit/:employeeId', {controller: 'EmployeeController' });
+    $routeProvider.when('/home', { templateUrl:"index.html", controller: 'EmployeeController' });
+    $routeProvider.when('/home/:employeeId', { template:"<div><h1>WORKING</h1></div>"});
 
-
-    // states.forEach(function (state) {
-    //   $stateProvider.state(state);
-    // })
+    $routeProvider.otherwise({ redirectTo: "/home" });
   });
 
 }());

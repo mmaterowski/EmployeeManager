@@ -1,9 +1,14 @@
-(function(){
+(function () {
 
-    angular.module("employeeManager").component("pageFooter",{
+    angular.module("employeeManager").component("pageFooter", {
         controllerAs: "vm",
-        controller: "FooterController",
-        templateUrl : "Components/page-footer.component.html"
+        controller: [controller],
+        templateUrl: "Components/page-footer.component.html"
     })
 
+    function controller() {
+        var vm = this;
+
+        vm.employeeCount = 6;
+    }
 }());

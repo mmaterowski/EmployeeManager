@@ -1,25 +1,25 @@
-   <div class="col-xs-12">
-    <h1>Add an employee {{idFromUrl}}</h1>
+   <div class="col-xs-12" ng-init="vm.getEmployeesOnInit()">
+    <h1>Add an employee</h1>
     <hr class="hr-success" />
    </div>
-        <form name="contactForm" ng-submit="submitForm(contactForm)" novalidate>
+        <form name="contactForm" ng-submit="vm.submitForm(contactForm)" novalidate>
             <div class="form-group">
                 <label>Name</label>
                 <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="text-danger">Please, fill
                     in employee's name.</p>
-                <input type="text" name="name" ng-required="true" ng-model="name" class="form-control" placeholder="Name">
+                <input type="text" name="name" ng-required="true" ng-model="vm.name" class="form-control" placeholder="Name">
             </div>
             <div class="form-group">
                 <label for="emailInput">Surname</label>
                 <p ng-show="contactForm.surname.$invalid && !contactForm.surname.$pristine" class="text-danger">Please
                     fill employee's surname.</p>
-                <input type="text" name="surname" ng-model="surname" ng-required="true" class="form-control"
+                <input type="text" name="surname" ng-model="vm.surname" ng-required="true" class="form-control"
                     placeholder="Surname">
             </div>
-            <div class="form-group" ng-init="init()">
+            <div class="form-group" ng-init="vm.init()">
                 <label for="employedSince">Working in company since </label>
                 <div class="input-group">
-                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="date" is-open="isDatepickerOpen"
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="vm.date" is-open="isDatepickerOpen"
                         datepicker-options="datepickerOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="isDatepickerOpen = !isDatepickerOpen">
@@ -34,14 +34,14 @@
                 <label for="vacationDays">Number of vacation days</label>
                 <p ng-show="contactForm.vacationDays.$invalid && !contactForm.vacationDays.$pristine" class="text-danger">This
                     field is required!</p>
-                <input type="text" name="vacationDays" class="form-control" ng-model="vacationDays" ng-required="true"
+                <input type="text" name="vacationDays" class="form-control" ng-model="vm.vacationDays" ng-required="true"
                     placeholder="">
             </div>
-            <div class="form-group" ng-init="getSupervisorsOnInit()">
+            <div class="form-group">
                 <label for="supervisor">Supervisor name</label>
-                <ui-select ng-model="selected.selectedSupervisor" required="true">
+                <ui-select ng-model="vm.selected.selectedSupervisor" required="true">
                     <ui-select-match placeholder="Choose">{{$select.selected.name}}</ui-select-match>>
-                    <ui-select-choices repeat="item in supervisorsArray">
+                    <ui-select-choices repeat="item in vm.supervisorsArray">
                         <div ng-bind-html="item.name"></div>
                     </ui-select-choices>
                 </ui-select>

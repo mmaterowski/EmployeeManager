@@ -73,16 +73,7 @@
             employees.splice(indexOfFoundEmployee, 1);
         };
 
-        var getEmployeeById = function (employeeId){
-
-            var foundEmployee = employees.filter(function (employee) {
-                return employee.id === employeeId;
-            });
-            console.log(foundEmployee);
-            return foundEmployee;
-        }
-
-        //NOT IMPLEMENTED IN VIEW
+               //NOT IMPLEMENTED IN VIEW
         // var editEmployee = function (employee) {
         //     var indexOfFoundEmployee = employees.indexof(employee);
 
@@ -97,7 +88,7 @@
             getEmployees: getEmployees,
             addEmployee: addEmployee,
             deleteEmployee: deleteEmployee,
-            getEmployeeById : getEmployeeById
+
          //   editEmployee: editEmployee
         };
     };

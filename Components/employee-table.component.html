@@ -1,6 +1,4 @@
-
-
-<div ng-show="data">
+<div ng-show="vm.data">
     <table class="table table-striped table-hover">
         <thead>
             </tr>
@@ -15,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="employee in data">
+            <tr ng-repeat="employee in vm.data">
                 <th scope="row">{{employee.id}}</th>
                 <td>{{employee.name}}</td>
                 <td>{{employee.surname}}</td>
@@ -23,9 +21,13 @@
                 <td>{{employee.supervisorName}}</td>
                 <td>{{employee.vacationDays}}</td>
                 <td>
-                    <button class="btn btn-sm btn-success" ui-sref='details({employeeName:employee.name+employee.surname})' href>Details&nbsp&nbsp</button>
-                    <button class="btn btn-sm btn-info" ng-click="vm.employeeEdit()" ui-sref='edit({employeeId:employee.id})'>&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp </button>
-                    <button class="btn btn-sm btn-danger" ng-click="deleteEmployee(employee.id)">Remove</button>
+                    <button class="btn btn-sm btn-success" ui-sref='details({employeeName:employee.name+employee.surname})'
+                        href>Details&nbsp&nbsp</button>
+                    <a href="/#/{{employee.id}}">
+                        <button class="btn btn-sm btn-info" ng-click="vm.employeeEdit()">&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp
+                        </button>
+                    </a>
+                    <button class="btn btn-sm btn-danger" ng-click="vm.deleteEmployee(employee.id)">Remove</button>
                 </td>
             </tr>
         </tbody>
