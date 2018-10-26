@@ -4,8 +4,8 @@
 
   app.config( function ($routeProvider) {
 
-    $routeProvider.when('/home', { templateUrl:"index.html", controller: 'EmployeeController' });
-    $routeProvider.when('/home/:employeeId', { template:"<div><h1>WORKING</h1></div>"});
+    $routeProvider.when('/home', { template:"<employee-manager-app></employee-manager-app>" });
+    $routeProvider.when('/employee/:employeeId', { template:"<employee-form></employee-form>"});
 
     $routeProvider.otherwise({ redirectTo: "/home" });
   });

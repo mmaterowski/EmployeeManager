@@ -23,9 +23,11 @@
                 <td>
                     <button class="btn btn-sm btn-success" ui-sref='details({employeeName:employee.name+employee.surname})'
                         href>Details&nbsp&nbsp</button>
-                    <a href="/#/{{employee.id}}">
+                    <a ng-href="#!employee/{{employee.id}}"> 
                         <button class="btn btn-sm btn-info" ng-click="vm.employeeEdit()">&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp
                         </button>
+                    </a>
+                        
                     </a>
                     <button class="btn btn-sm btn-danger" ng-click="vm.deleteEmployee(employee.id)">Remove</button>
                 </td>

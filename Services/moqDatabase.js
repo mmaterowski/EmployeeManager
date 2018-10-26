@@ -73,6 +73,18 @@
             employees.splice(indexOfFoundEmployee, 1);
         };
 
+        var getEmployeeById = function(employeeId){
+            for (var i = 0; i < employees.length; i++) {
+                if (employees[i].id === Number(employeeId)) {
+
+                    return employees[i];
+                }
+            }
+            return null;
+         
+        }
+       
+
                //NOT IMPLEMENTED IN VIEW
         // var editEmployee = function (employee) {
         //     var indexOfFoundEmployee = employees.indexof(employee);
@@ -88,6 +100,7 @@
             getEmployees: getEmployees,
             addEmployee: addEmployee,
             deleteEmployee: deleteEmployee,
+            getEmployeeById : getEmployeeById
 
          //   editEmployee: editEmployee
         };

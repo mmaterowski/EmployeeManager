@@ -2,32 +2,36 @@
 
     angular.module("employeeManager").component("employeeForm", {
         controllerAs: "vm",
-        controller: ['moqDatabase',"errorVerifier","$window",controller],
+        controller: ['moqDatabase', "errorVerifier", "$routeParams", controller],
         templateUrl: "Components/employee-form.component.html"
     });
 
 
-    function controller(moqDatabase,errorVerifier,$window,) {
+    function controller(moqDatabase, errorVerifier, $routeParams) {
         var vm = this;
 
-        //   function fillForm(employeeId){
-        //     console.log("employee id from fillForm:" + employeeId)
-        //     var foundEmployee = moqDatabase.getEmployeeById(employeeId);
-        //     console.log(foundEmployee);
-        //     $scope.name = foundEmployee.name;
-        //     $scope.surname = foundEmployee.surname;
-        //    // employedSince: parseDate($scope.date),
-        //     $scope.vacationDays = foundEmployee.vacationDays
-        //     $scope.selected.selectedSupervisor.name = foundEmployee.supervisorName
-        //   }
-
-        vm.selected = {};
+        vm.$onInit = function () {
+            vm.init();
+            var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
+            console.log(foundEmployee);
+            vm.name = foundEmployee.name;
+            vm.surname = foundEmployee.surname;
+            vm.employedSince = foundEmployee.date,
+                vm.vacationDays = foundEmployee.vacationDays
+            //vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
+        }
+        vm.name = {};
+        vm.surname = {};
+        vm.vacationDays = {};
+      //  vm.selected = {};
+      //  vm.selected.selectedSupervisor.name = {};
+        vm.idFromParams = $routeParams.employeeId;
         vm.supervisorsArray = '';
         vm.employees = moqDatabase.getEmployees();
         vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
-        
+
         //vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
-        
+
         vm.init = function () {
             vm.date = null;
             vm.format = 'yyyy/MM/dd';
@@ -68,8 +72,6 @@
                 alert("date related error!");
             }
         }
-
-
 
         function assingEmployeeNamesToArray(employeesData) {
             var supervisorsArray = [];
