@@ -2,12 +2,12 @@
 
     angular.module("employeeManager").component("employeeForm", {
         controllerAs: "vm",
-        controller: ['moqDatabase', "errorVerifier", "$routeParams", controller],
+        controller: ['moqDatabase', "errorVerifier", "$routeParams","$location", controller],
         templateUrl: "Components/employee-form.component.html"
     });
 
 
-    function controller(moqDatabase, errorVerifier, $routeParams) {
+    function controller(moqDatabase, errorVerifier, $routeParams,$location) {
         var vm = this;
 
         vm.name = '';
@@ -30,7 +30,7 @@
                 vm.name = foundEmployee.name;
                 vm.surname = foundEmployee.surname;
                 vm.employedSince = foundEmployee.employedSince,
-                    vm.date = constructDate(vm.employedSince);
+                vm.date = constructDate(vm.employedSince);
                 vm.vacationDays = foundEmployee.vacationDays
                 vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
                 vm.buttonName = "Confirm changes";
@@ -41,17 +41,17 @@
 
         vm.submitForm = function () {
             var createdEmployee = createEmployee();
-            if (vm.idFromParams) {
-                var index = moqDatabase.getEmployeeIndex(vm.idFromParams);
-                moqDatabase.updateEmployee(index, createdEmployee);
-            } else {
-                var isEmployeeValid = errorVerifier.verifyEmployee(createdEmployee);
-                if (isEmployeeValid) {
+            var isEmployeeValid = errorVerifier.verifyEmployee(createdEmployee)
+            if (isEmployeeValid) {
+                if (vm.idFromParams) {
+                    var index = moqDatabase.getEmployeeIndex(vm.idFromParams);
+                     moqDatabase.updateEmployee(index,createdEmployee);
+                     $location.path( "#" );
+                }
+                else{
                     moqDatabase.addEmployee(createdEmployee);
                 }
-            }
-            console.log(createdEmployee);
-
+            } 
         };
 
         function createEmployee() {

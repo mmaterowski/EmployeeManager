@@ -67,8 +67,6 @@
         };
 
         var updateEmployee = function(indexOfEmployee,employeeObj){
-            console.log(indexOfEmployee);
-            console.log(employeeObj.name);
             employees[indexOfEmployee] = employeeObj;
         }
 
