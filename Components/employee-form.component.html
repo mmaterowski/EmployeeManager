@@ -1,5 +1,5 @@
    <div class="col-xs-12" ng-init="vm.getEmployeesOnInit()">
-    <h1>Add an employee {{vm.idFromParams}}</h1>
+    <h1>{{vm.header}}</h1>
     <hr class="hr-success" />
    </div>
         <form name="contactForm" ng-submit="vm.submitForm(contactForm)" novalidate>
@@ -47,7 +47,7 @@
                 </ui-select>
             </div>
             <div class="btn btn-group">
-                <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success">Add employee</button>
+                <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success">{{vm.buttonName}}</button>
                 <a href="#" class="btn btn-danger">Cancel</a>
             </div>
         </form>

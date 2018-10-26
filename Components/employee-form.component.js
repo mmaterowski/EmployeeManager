@@ -12,23 +12,31 @@
 
         vm.$onInit = function () {
             vm.init();
-            var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
+            if (vm.idFromParams) {
+        
+                var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
             console.log(foundEmployee);
             vm.name = foundEmployee.name;
             vm.surname = foundEmployee.surname;
             vm.employedSince = foundEmployee.date,
                 vm.vacationDays = foundEmployee.vacationDays
             //vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
+            vm.buttonName = "Confirm changes";
+            vm.header = "Edit employee " +  foundEmployee.name +" "+ foundEmployee.surname;
+            }
+            
         }
-        vm.name = {};
-        vm.surname = {};
-        vm.vacationDays = {};
+        vm.name = '';
+        vm.surname = '';
+        vm.vacationDays = '';
       //  vm.selected = {};
       //  vm.selected.selectedSupervisor.name = {};
         vm.idFromParams = $routeParams.employeeId;
         vm.supervisorsArray = '';
         vm.employees = moqDatabase.getEmployees();
         vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
+        vm.buttonName = "Add employee";
+        vm.header = "Add an employee";
 
         //vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
 
