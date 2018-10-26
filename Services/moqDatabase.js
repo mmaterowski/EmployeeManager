@@ -1,6 +1,6 @@
 (function () {
 
-    var moqDatabase = function () {
+    var moqDatabase = function ($rootScope) {
     let index=10;
 
         var employees = [
@@ -62,6 +62,7 @@
         var addEmployee = function (employee) {
             employee.id = index;
             employees.push(employee);
+            $rootScope.onEmployeeCountChanged();
             index++;
         };
 
@@ -71,6 +72,7 @@
             });
             var indexOfFoundEmployee = employees.indexOf(foundEmployee);
             employees.splice(indexOfFoundEmployee, 1);
+            $rootScope.onEmployeeCountChanged();
         };
 
         var getEmployeeById = function(employeeId){
@@ -81,28 +83,18 @@
                 }
             }
             return null;
-         
         }
-       
-
-               //NOT IMPLEMENTED IN VIEW
-        // var editEmployee = function (employee) {
-        //     var indexOfFoundEmployee = employees.indexof(employee);
-
-        //     employees[indexOfFoundEmployee].name = employee.name;
-        //     employees[indexOfFoundEmployee].name = employee.surname;
-        //     employees[indexOfFoundEmployee].name = employee.vacationDays;
-        //     employees[indexOfFoundEmployee].name = employee.employedSice;
-        //     employees[indexOfFoundEmployee].name = employee.supervisorName;
-        // };
+        
+        var getEmployeeCount = function(){
+                return employees.length;
+        }
 
         return {
             getEmployees: getEmployees,
             addEmployee: addEmployee,
             deleteEmployee: deleteEmployee,
-            getEmployeeById : getEmployeeById
-
-         //   editEmployee: editEmployee
+            getEmployeeById : getEmployeeById,
+            getEmployeeCount: getEmployeeCount
         };
     };
     var module = angular.module("employeeManager");

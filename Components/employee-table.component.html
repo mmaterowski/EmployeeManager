@@ -3,36 +3,33 @@
         <thead>
             </tr>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">Started working on:</th>
-                <th scope="col">Supervisor</th>
-                <th scope="col">Vacation Days</th>
-                <th scope="col">Actions</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Started working on:</th>
+                <th>Supervisor</th>
+                <th>Vacation Days</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="employee in vm.data">
-                <th scope="row">{{employee.id}}</th>
+                <th>{{employee.id}}</th>
                 <td>{{employee.name}}</td>
                 <td>{{employee.surname}}</td>
                 <td>{{employee.employedSince}}</td>
                 <td>{{employee.supervisorName}}</td>
                 <td>{{employee.vacationDays}}</td>
                 <td>
-                    <button class="btn btn-sm btn-success" ui-sref='details({employeeName:employee.name+employee.surname})'
-                        href>Details&nbsp&nbsp</button>
-                    <a ng-href="#!employee/{{employee.id}}"> 
+                    <a ng-href="#!employee/{{employee.id}}">
                         <button class="btn btn-sm btn-info" ng-click="vm.employeeEdit()">&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp
                         </button>
                     </a>
-                        
+
                     </a>
                     <button class="btn btn-sm btn-danger" ng-click="vm.deleteEmployee(employee.id)">Remove</button>
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
 </div>

@@ -2,35 +2,35 @@
 
     angular.module("employeeManager").component("employeeForm", {
         controllerAs: "vm",
-        controller: ['moqDatabase', "errorVerifier", "$routeParams", controller],
+        controller: ['moqDatabase', "errorVerifier", "$routeParams","uibDateParser", controller],
         templateUrl: "Components/employee-form.component.html"
     });
 
 
-    function controller(moqDatabase, errorVerifier, $routeParams) {
+    function controller(moqDatabase, errorVerifier, $routeParams,uibDateParser) {
         var vm = this;
 
         vm.$onInit = function () {
             vm.init();
             if (vm.idFromParams) {
-        
+
                 var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
-            console.log(foundEmployee);
-            vm.name = foundEmployee.name;
-            vm.surname = foundEmployee.surname;
-            vm.employedSince = foundEmployee.date,
+                vm.name = foundEmployee.name;
+                vm.surname = foundEmployee.surname;
+              //  vm.employedSince = foundEmployee.employedSince,
                 vm.vacationDays = foundEmployee.vacationDays
-            //vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
-            vm.buttonName = "Confirm changes";
-            vm.header = "Edit employee " +  foundEmployee.name +" "+ foundEmployee.surname;
+                vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
+                vm.buttonName = "Confirm changes";
+                vm.header = "Edit employee " + foundEmployee.name + " " + foundEmployee.surname;
             }
-            
+
         }
         vm.name = '';
         vm.surname = '';
         vm.vacationDays = '';
-      //  vm.selected = {};
-      //  vm.selected.selectedSupervisor.name = {};
+        vm.selected = {};
+        vm.selected.selectedSupervisor = {};
+        vm.selected.selectedSupervisor.name = '';
         vm.idFromParams = $routeParams.employeeId;
         vm.supervisorsArray = '';
         vm.employees = moqDatabase.getEmployees();
@@ -38,7 +38,9 @@
         vm.buttonName = "Add employee";
         vm.header = "Add an employee";
 
-        //vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
+        //trying to parse date 
+       // var dateString = "2018-10-10T22:00:00.000Z";
+       // dateString.parse()
 
         vm.init = function () {
             vm.date = null;

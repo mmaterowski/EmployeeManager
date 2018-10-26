@@ -2,13 +2,15 @@
 
     angular.module("employeeManager").component("pageFooter", {
         controllerAs: "vm",
-        controller: [controller],
-        templateUrl: "Components/page-footer.component.html"
+        controller: ["moqDatabase", controller],
+        templateUrl: "Components/page-footer.component.html",
+        bindings:{
+            count: "<"
+        }
     })
 
-    function controller() {
+    function controller(moqDatabase) {
         var vm = this;
-
-        vm.employeeCount = 6;
+       
     }
 }());
