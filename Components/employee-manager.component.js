@@ -10,9 +10,10 @@
     function controller(moqDatabase,$rootScope){
         var vm= this;
         vm.employeeCount = moqDatabase.getEmployeeCount();
-         $rootScope.onEmployeeCountChanged = function(){
-             vm.employeeCount = moqDatabase.getEmployeeCount();
-         };
+        // $rootScope.onEmployeeCountChanged = function(){
+        //     console.log("hello");
+        //     vm.employeeCount = moqDatabase.getEmployeeCount();
+        // };
     }
   
 }());

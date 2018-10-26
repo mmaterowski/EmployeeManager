@@ -52,9 +52,7 @@
     };
 
     function isYearOfEmploymentInFutureYear(date) {
-      var dateLength = date.length;
-      var yearOfEmployment = date.slice(dateLength - 4, dateLength);
-
+      var yearOfEmployment = date.slice(0, 4);
       var today = new Date();
       var currentYear = today.getFullYear();
 

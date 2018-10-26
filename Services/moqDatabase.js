@@ -8,7 +8,7 @@
                 id: 1,
                 name: "Ora",
                 surname: "Page",
-                employedSince: "10-Dec-2015",
+                employedSince: "2015-12-26",
                 vacationDays: 4,
                 supervisorName: "Dave Adams"
             },
@@ -16,7 +16,7 @@
                 id: 2,
                 name: "Antonio",
                 surname: "Morris",
-                employedSince: "16-Jan-2016",
+                employedSince: "2017-05-02",
                 vacationDays: 5,
                 supervisorName: "Dave Adams"
             },
@@ -24,7 +24,7 @@
                 id: 3,
                 name: "Andre",
                 surname: "Brewer",
-                employedSince: "23-Nov-2000",
+                employedSince: "2017-03-12",
                 vacationDays: 10,
                 supervisorName: "Dave Adams"
             },
@@ -32,7 +32,7 @@
                 id: 4,
                 name: "Paulette",
                 surname: "Stewart",
-                employedSince: "15-Sep-2005",
+                employedSince: "2015-12-26",
                 vacationDays: 2,
                 supervisorName: "Dave Adams"
             },
@@ -40,7 +40,7 @@
                 id: 5,
                 name: "Dave",
                 surname: "Adams",
-                employedSince: "12-Feb-2018",
+                employedSince: "2015-10-05",
                 vacationDays: 15,
                 supervisorName: "Ora Page"
             },
@@ -48,7 +48,7 @@
                 id: 6,
                 name: "Elisa",
                 surname: "Santos",
-                employedSince: "16-Jan-2008",
+                employedSince: "2015-05-19",
                 vacationDays: 15,
                 supervisorName: "Ora Page"
             }
@@ -62,9 +62,15 @@
         var addEmployee = function (employee) {
             employee.id = index;
             employees.push(employee);
-            $rootScope.onEmployeeCountChanged();
             index++;
+            // $rootScope.onEmployeeCountChanged();
         };
+
+        var updateEmployee = function(indexOfEmployee,employeeObj){
+            console.log(indexOfEmployee);
+            console.log(employeeObj.name);
+            employees[indexOfEmployee] = employeeObj;
+        }
 
         var deleteEmployee = function (employeeId) {
             var foundEmployee = employees.filter(function (employee) {
@@ -72,7 +78,7 @@
             });
             var indexOfFoundEmployee = employees.indexOf(foundEmployee);
             employees.splice(indexOfFoundEmployee, 1);
-            $rootScope.onEmployeeCountChanged();
+            // $rootScope.onEmployeeCountChanged();
         };
 
         var getEmployeeById = function(employeeId){
@@ -80,6 +86,15 @@
                 if (employees[i].id === Number(employeeId)) {
 
                     return employees[i];
+                }
+            }
+            return null;
+        }
+
+        var getEmployeeIndex = function(employeeId){
+            for (var i = 0; i < employees.length; i++) {
+                if (employees[i].id === Number(employeeId)) {
+                    return i;
                 }
             }
             return null;
@@ -94,7 +109,9 @@
             addEmployee: addEmployee,
             deleteEmployee: deleteEmployee,
             getEmployeeById : getEmployeeById,
-            getEmployeeCount: getEmployeeCount
+            getEmployeeCount: getEmployeeCount,
+            getEmployeeIndex: getEmployeeIndex,
+            updateEmployee : updateEmployee
         };
     };
     var module = angular.module("employeeManager");

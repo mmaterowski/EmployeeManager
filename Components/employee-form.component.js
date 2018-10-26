@@ -2,29 +2,14 @@
 
     angular.module("employeeManager").component("employeeForm", {
         controllerAs: "vm",
-        controller: ['moqDatabase', "errorVerifier", "$routeParams","uibDateParser", controller],
+        controller: ['moqDatabase', "errorVerifier", "$routeParams", controller],
         templateUrl: "Components/employee-form.component.html"
     });
 
 
-    function controller(moqDatabase, errorVerifier, $routeParams,uibDateParser) {
+    function controller(moqDatabase, errorVerifier, $routeParams) {
         var vm = this;
 
-        vm.$onInit = function () {
-            vm.init();
-            if (vm.idFromParams) {
-
-                var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
-                vm.name = foundEmployee.name;
-                vm.surname = foundEmployee.surname;
-              //  vm.employedSince = foundEmployee.employedSince,
-                vm.vacationDays = foundEmployee.vacationDays
-                vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
-                vm.buttonName = "Confirm changes";
-                vm.header = "Edit employee " + foundEmployee.name + " " + foundEmployee.surname;
-            }
-
-        }
         vm.name = '';
         vm.surname = '';
         vm.vacationDays = '';
@@ -38,26 +23,35 @@
         vm.buttonName = "Add employee";
         vm.header = "Add an employee";
 
-        //trying to parse date 
-       // var dateString = "2018-10-10T22:00:00.000Z";
-       // dateString.parse()
+        vm.$onInit = function () {
+            if (vm.idFromParams) {
 
-        vm.init = function () {
-            vm.date = null;
-            vm.format = 'yyyy/MM/dd';
-            vm.datepickerOptions = {
-                minDate: new Date('2010-05-01'),
-                initDate: new Date()
-            };
-        };
+                var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
+                vm.name = foundEmployee.name;
+                vm.surname = foundEmployee.surname;
+                vm.employedSince = foundEmployee.employedSince,
+                    vm.date = constructDate(vm.employedSince);
+                vm.vacationDays = foundEmployee.vacationDays
+                vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
+                vm.buttonName = "Confirm changes";
+                vm.header = "Edit employee " + foundEmployee.name + " " + foundEmployee.surname;
+            }
 
+        }
 
         vm.submitForm = function () {
             var createdEmployee = createEmployee();
-            var isEmployeeValid = errorVerifier.verifyEmployee(createdEmployee);
-            if (isEmployeeValid) {
-                moqDatabase.addEmployee(createdEmployee);
+            if (vm.idFromParams) {
+                var index = moqDatabase.getEmployeeIndex(vm.idFromParams);
+                moqDatabase.updateEmployee(index, createdEmployee);
+            } else {
+                var isEmployeeValid = errorVerifier.verifyEmployee(createdEmployee);
+                if (isEmployeeValid) {
+                    moqDatabase.addEmployee(createdEmployee);
+                }
             }
+            console.log(createdEmployee);
+
         };
 
         function createEmployee() {
@@ -74,13 +68,28 @@
 
         function parseDate(date) {
             if (date) {
-                date = date.toString();
-                var dateInfo = date.split(" ");
-                var correctlyFormattedDate = dateInfo[2] + "-" + dateInfo[1] + "-" + dateInfo[3];
+                var year = date.getFullYear();
+                var month = date.getMonth();
+                var day = date.getDate();
+
+                var correctlyFormattedDate = year + "-" + month + "-" + day;
                 return correctlyFormattedDate;
             } else {
                 alert("date related error!");
             }
+        }
+
+        function constructDate(dateString) {
+            var year = dateString.substring(0, 4);
+            var month = dateString.substring(5, 7);
+            var month = Number(month) - 1;
+            var day = dateString.substring(8, 11);
+            var date = new Date();
+            date.setFullYear(year);
+            date.setMonth(month);
+            date.setDate(day);
+
+            return date;
         }
 
         function assingEmployeeNamesToArray(employeesData) {
