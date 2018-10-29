@@ -8,9 +8,7 @@
 
     function controller(moqDatabase) {
         var vm = this;
-        vm.employeeName = 'nothing';
-        vm.passedEmployee = {};
-
+        
         fetchEmployeeData = (function () {
             vm.data = moqDatabase.getEmployees();
         }());

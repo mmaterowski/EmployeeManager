@@ -48,10 +48,7 @@
                 if (vm.idFromParams) {
                     var index = moqDatabase.getEmployeeIndex(vm.idFromParams);
                     moqDatabase.updateEmployee(index, createdEmployee);
-                    location.reload();
-                    $location.path("#");
-
-                    
+                    $location.path("/home");
                 } else {
                     moqDatabase.addEmployee(createdEmployee);
                 }
@@ -60,7 +57,7 @@
 
         function createEmployee() {
             return {
-                id: vm.idFromParams,
+                id: Number(vm.idFromParams),
                 name: vm.name,
                 surname: vm.surname,
                 employedSince: parseDate(vm.date),
