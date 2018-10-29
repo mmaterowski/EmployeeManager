@@ -2,31 +2,30 @@
 
     angular.module("employeeManager").component("employeeTable", {
         controllerAs: "vm",
-        controller: ["moqDatabase", "$scope", controller],
+        controller: ["moqDatabase", controller],
         bindings: {
             "divisor": "<"
         },
         templateUrl: "Components/employee-table.component.html"
     });
 
-    function controller(moqDatabase,$scope) {
+    function controller(moqDatabase) {
         var vm = this;
 
         vm.$onInit = function () {
-            vm.divisorParameter = $scope.vm.divisor
-
+            vm.divisorParameter = vm.divisor
             fetchEmployeeData = (function () {
                 vm.data = moqDatabase.getEmployees();
             }());
         }
 
-        vm.filter = function(){
+        vm.filter = function () {
             vm.data = moqDatabase.filterEmployees(vm.divisorParameter);
         }
 
         fetchEmployeeData = (function () {
             vm.data = moqDatabase.getEmployees();
-      
+
         }());
 
         vm.deleteEmployee = function (employeeID) {
