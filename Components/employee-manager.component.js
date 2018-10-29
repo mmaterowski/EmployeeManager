@@ -2,18 +2,14 @@
     angular.module("employeeManager").component("employeeManagerApp",{
         templateUrl:"Components/employee-manager.component.html",
         controllerAs:'vm',
-        controller: ["moqDatabase","$rootScope",controller]
+        controller: ["moqDatabase",controller]
 
     })
 
 
-    function controller(moqDatabase,$rootScope){
+    function controller(moqDatabase){
         var vm= this;
         vm.employeeCount = moqDatabase.getEmployeeCount();
-        // $rootScope.onEmployeeCountChanged = function(){
-        //     console.log("hello");
-        //     vm.employeeCount = moqDatabase.getEmployeeCount();
-        // };
     }
   
 }());

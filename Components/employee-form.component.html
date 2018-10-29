@@ -1,55 +1,59 @@
-   <div class="col-xs-12" ng-init="vm.getEmployeesOnInit()">
-    <h1>{{vm.header}}</h1>
-    <hr class="hr-success" />
-   </div>
-
-        <form name="contactForm" ng-submit="vm.submitForm(contactForm)" novalidate>
-            <div class="form-group">
-                <label>Name</label>
-                <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="text-danger">Please, fill
-                    in employee's name.</p>
-                <input type="text" name="name" ng-required="true" ng-model="vm.name" class="form-control" placeholder="Name">
-            </div>
-            <div class="form-group">
-                <label for="emailInput">Surname</label>
-                <p ng-show="contactForm.surname.$invalid && !contactForm.surname.$pristine" class="text-danger">Please
-                    fill employee's surname.</p>
-                <input type="text" name="surname" ng-model="vm.surname" ng-required="true" class="form-control"
-                    placeholder="Surname">
-            </div>
-            <div class="form-group">
-                <label for="employedSince">Working in company since</label>
-                <div class="input-group" style="width:200px">
-                    <input type="datetime" class="form-control"  ng-model="vm.date" uib-datepicker-popup="yyyy-MM-dd" is-open="isDatepickerOpen"
-                        ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="isDatepickerOpen = !isDatepickerOpen">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
+  <div id=boxshadow>
+    <div class="col-xs-12" ng-init="vm.getEmployeesOnInit()" >
+        <h1>{{vm.header}}</h1>
+        <hr class="hr-success" />
+       </div>
+    
+            <form name="contactForm" ng-submit="vm.submitForm(contactForm)" novalidate class="well background-light"> 
+                <div class="form-group">
+                    <label>Name</label>
+                    <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="text-danger">Please, fill
+                        in employee's name.</p>
+                    <input type="text" name="name" ng-required="true" ng-model="vm.name" class="form-control" placeholder="Name">
                 </div>
-                <p ng-show="contactForm.employedSince.$invalid && !contactForm.employedSince.$pristine" class="text-danger">This
-                    field is required!</p>
-            </div>
-            <div class="form-group">
-                <label for="vacationDays">Number of vacation days</label>
-                <p ng-show="contactForm.vacationDays.$invalid && !contactForm.vacationDays.$pristine" class="text-danger">This
-                    field is required!</p>
-                <input type="text" name="vacationDays" class="form-control" ng-model="vm.vacationDays" ng-required="true"
-                    placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="supervisor">Supervisor name</label>
-                <ui-select ng-model="vm.selected.selectedSupervisor" required="true">
-                    <ui-select-match placeholder="Choose">{{$select.selected.name}}</ui-select-match>>
-                    <ui-select-choices repeat="item in vm.supervisorsArray">
-                        <div ng-bind-html="item.name"></div>
-                    </ui-select-choices>
-                </ui-select>
-            </div>
-            <div class="btn btn-group">
-                <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success">{{vm.buttonName}}</button>
-                <a href="#" class="btn btn-danger">Cancel</a>
-            </div>
-        </form>
-
+                <div class="form-group">
+                    <label for="emailInput">Surname</label>
+                    <p ng-show="contactForm.surname.$invalid && !contactForm.surname.$pristine" class="text-danger">Please
+                        fill employee's surname.</p>
+                    <input type="text" name="surname" ng-model="vm.surname" ng-required="true" class="form-control"
+                        placeholder="Surname">
+                </div>
+                <div class="form-group">
+                    <label for="employedSince">Working in company since</label>
+                    <div class="input-group" style="width:200px">
+                        <input type="datetime" class="form-control"  ng-model="vm.date" uib-datepicker-popup="yyyy-MM-dd" is-open="isDatepickerOpen"
+                            ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="isDatepickerOpen = !isDatepickerOpen">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <p ng-show="contactForm.employedSince.$invalid && !contactForm.employedSince.$pristine" class="text-danger">This
+                        field is required!</p>
+                </div>
+                <div class="form-group">
+                    <label for="vacationDays">Number of vacation days</label>
+                    <p ng-show="contactForm.vacationDays.$invalid && !contactForm.vacationDays.$pristine" class="text-danger">This
+                        field is required!</p>
+                    <input type="text" name="vacationDays" class="form-control" ng-model="vm.vacationDays" ng-required="true"
+                        placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="supervisor">Supervisor name</label>
+                    <ui-select ng-model="vm.selected.selectedSupervisor" required="true">
+                        <ui-select-match placeholder="Choose">{{$select.selected.name}}</ui-select-match>>
+                        <ui-select-choices repeat="item in vm.supervisorsArray">
+                            <div ng-bind-html="item.name"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="btn btn-group">
+                    <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success">{{vm.buttonName}}</button>
+                    <a href="#" class="btn btn-danger">Cancel</a>
+                </div>
+            </form>
+    
+    
+  </div>
+ 

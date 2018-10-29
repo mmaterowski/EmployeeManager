@@ -3,11 +3,10 @@
     angular.module("employeeManager").component("employeeTable", {
         controllerAs: "vm",
         controller: ["moqDatabase", controller],
-
         templateUrl: "Components/employee-table.component.html"
     });
 
-    function controller(moqDatabase, $rootScope) {
+    function controller(moqDatabase) {
         var vm = this;
         vm.employeeName = 'nothing';
         vm.passedEmployee = {};
