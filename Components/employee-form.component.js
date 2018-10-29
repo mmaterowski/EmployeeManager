@@ -57,7 +57,7 @@
 
         function createEmployee() {
             return {
-                id: 0,
+                id: vm.idFromParams,
                 name: vm.name,
                 surname: vm.surname,
                 employedSince: parseDate(vm.date),
