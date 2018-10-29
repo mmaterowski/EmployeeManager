@@ -73,9 +73,10 @@
 
         var deleteEmployee = function (employeeId) {
             var foundEmployee = employees.filter(function (employee) {
-                return employee.id === employeeId;
+                return (employee.id === employeeId);
             });
-            var indexOfFoundEmployee = employees.indexOf(foundEmployee);
+            var employee = foundEmployee[0];
+            var indexOfFoundEmployee = employees.indexOf(employee);
             employees.splice(indexOfFoundEmployee, 1);
         };
 
