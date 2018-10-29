@@ -58,6 +58,14 @@
             return employees;
         };
 
+        var filterEmployees = function(expression){
+          var employeeData = employees.filter(function (employee) {
+              if (0===(employee.id%expression)) {
+                return employee==employee;
+              }
+            })
+            return employeeData;
+        }
 
         var addEmployee = function (employee) {
             employee.id = index;
@@ -67,7 +75,6 @@
 
         var updateEmployee = function(indexOfEmployee,employeeObj){
             employees[indexOfEmployee] = employeeObj;
-            console.log(employees);
 
         }
 
@@ -110,7 +117,8 @@
             getEmployeeById : getEmployeeById,
             getEmployeeCount: getEmployeeCount,
             getEmployeeIndex: getEmployeeIndex,
-            updateEmployee : updateEmployee
+            updateEmployee : updateEmployee,
+            filterEmployees: filterEmployees
         };
     };
     var module = angular.module("employeeManager");
