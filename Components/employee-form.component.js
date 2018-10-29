@@ -51,6 +51,7 @@
                     $location.path("/home");
                 } else {
                     moqDatabase.addEmployee(createdEmployee);
+
                 }
             }
         };
