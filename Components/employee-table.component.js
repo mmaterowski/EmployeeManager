@@ -21,10 +21,9 @@
         }
 
         vm.filter = function(){
-            console.log("hello")
             vm.data = moqDatabase.filterEmployees(vm.divisorParameter);
         }
-        
+
         fetchEmployeeData = (function () {
             vm.data = moqDatabase.getEmployees();
       

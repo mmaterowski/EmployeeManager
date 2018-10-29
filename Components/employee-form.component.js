@@ -33,7 +33,7 @@
             var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
             vm.name = foundEmployee.name;
             vm.surname = foundEmployee.surname;
-            vm.employedSince = foundEmployee.employedSince,
+            vm.employedSince = foundEmployee.employedSince;
             vm.date = constructProperlyFormattedDate(foundEmployee.employedSince);
             vm.vacationDays = foundEmployee.vacationDays
             vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
@@ -48,9 +48,11 @@
                 if (vm.idFromParams) {
                     var index = moqDatabase.getEmployeeIndex(vm.idFromParams);
                     moqDatabase.updateEmployee(index, createdEmployee);
+                    vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
                     $location.path("/home");
                 } else {
                     moqDatabase.addEmployee(createdEmployee);
+                    vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
 
                 }
             }
@@ -84,7 +86,7 @@
                 } else {
                     correctlyFormattedDate = year + "-" + "0" + month + "-" + "0" + day;
                 }
-                
+
                 return correctlyFormattedDate;
 
             } else {
