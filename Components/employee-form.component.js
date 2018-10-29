@@ -80,9 +80,27 @@
         }
 
         function constructDate(dateString) {
+            console.log("inside");
             var year = dateString.substring(0, 4);
-            var month = dateString.substring(5, 7);
+            console.log(dateString.length);
+            console.log(dateString)
+            if (dateString.length==9) {
+                var month = dateString.substring(5, 6);
+            console.log(month);
             var month = Number(month) - 1;
+
+            var day = dateString.substring(7, 10);
+            var date = new Date();
+            date.setFullYear(year);
+            date.setMonth(month);
+            date.setDate(day);
+
+            return date;
+            }
+            var month = dateString.substring(5, 7);
+            console.log(month);
+            var month = Number(month) - 1;
+
             var day = dateString.substring(8, 11);
             var date = new Date();
             date.setFullYear(year);

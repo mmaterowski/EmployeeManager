@@ -1,6 +1,6 @@
 (function () {
 
-    var moqDatabase = function ($rootScope) {
+    var moqDatabase = function () {
     let index=10;
 
         var employees = [
@@ -16,7 +16,7 @@
                 id: 2,
                 name: "Antonio",
                 surname: "Morris",
-                employedSince: "2017-05-02",
+                employedSince: "2017-5-02",
                 vacationDays: 5,
                 supervisorName: "Dave Adams"
             },
@@ -24,7 +24,7 @@
                 id: 3,
                 name: "Andre",
                 surname: "Brewer",
-                employedSince: "2017-03-12",
+                employedSince: "2017-3-12",
                 vacationDays: 10,
                 supervisorName: "Dave Adams"
             },
@@ -48,7 +48,7 @@
                 id: 6,
                 name: "Elisa",
                 surname: "Santos",
-                employedSince: "2015-05-19",
+                employedSince: "2015-5-19",
                 vacationDays: 15,
                 supervisorName: "Ora Page"
             }
