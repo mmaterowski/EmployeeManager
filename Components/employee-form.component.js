@@ -34,7 +34,7 @@
             vm.name = foundEmployee.name;
             vm.surname = foundEmployee.surname;
             vm.employedSince = foundEmployee.employedSince,
-                vm.date = constructProperlyFormattedDate(vm.employedSince);
+            vm.date = constructProperlyFormattedDate(foundEmployee.employedSince);
             vm.vacationDays = foundEmployee.vacationDays
             vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
             vm.buttonName = "Confirm changes";
@@ -83,8 +83,9 @@
                 } else {
                     correctlyFormattedDate = year + "-" + "0" + month + "-" + "0" + day;
                 }
-
+                
                 return correctlyFormattedDate;
+
             } else {
                 alert("date related error!");
             }
