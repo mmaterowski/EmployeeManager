@@ -64,6 +64,7 @@
                 return employee==employee;
               }
             })
+            employees=employeeData;
             return employeeData;
         }
 
@@ -75,7 +76,6 @@
 
         var updateEmployee = function(indexOfEmployee,employeeObj){
             employees[indexOfEmployee] = employeeObj;
-
         }
 
         var deleteEmployee = function (employeeId) {
