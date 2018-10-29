@@ -2,12 +2,12 @@
 
     angular.module("employeeManager").component("employeeForm", {
         controllerAs: "vm",
-        controller: ['moqDatabase', "errorVerifier", "$routeParams","$location", controller],
+        controller: ['moqDatabase', "errorVerifier", "$routeParams", "$location", controller],
         templateUrl: "Components/employee-form.component.html"
     });
 
 
-    function controller(moqDatabase, errorVerifier, $routeParams,$location) {
+    function controller(moqDatabase, errorVerifier, $routeParams, $location) {
         var vm = this;
 
         vm.name = '';
@@ -30,7 +30,7 @@
                 vm.name = foundEmployee.name;
                 vm.surname = foundEmployee.surname;
                 vm.employedSince = foundEmployee.employedSince,
-                vm.date = constructDate(vm.employedSince);
+                    vm.date = constructDate(vm.employedSince);
                 vm.vacationDays = foundEmployee.vacationDays
                 vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
                 vm.buttonName = "Confirm changes";
@@ -45,13 +45,12 @@
             if (isEmployeeValid) {
                 if (vm.idFromParams) {
                     var index = moqDatabase.getEmployeeIndex(vm.idFromParams);
-                     moqDatabase.updateEmployee(index,createdEmployee);
-                     $location.path( "#" );
-                }
-                else{
+                    moqDatabase.updateEmployee(index, createdEmployee);
+                    $location.path("#");
+                } else {
                     moqDatabase.addEmployee(createdEmployee);
                 }
-            } 
+            }
         };
 
         function createEmployee() {
@@ -71,6 +70,7 @@
                 var year = date.getFullYear();
                 var month = date.getMonth();
                 var day = date.getDate();
+                month = month + 1;
 
                 var correctlyFormattedDate = year + "-" + month + "-" + day;
                 return correctlyFormattedDate;
@@ -80,25 +80,21 @@
         }
 
         function constructDate(dateString) {
-            console.log("inside");
+
             var year = dateString.substring(0, 4);
-            console.log(dateString.length);
-            console.log(dateString)
-            if (dateString.length==9) {
+            if (dateString.length == 9) {
                 var month = dateString.substring(5, 6);
-            console.log(month);
-            var month = Number(month) - 1;
+                var month = Number(month) - 1;
 
-            var day = dateString.substring(7, 10);
-            var date = new Date();
-            date.setFullYear(year);
-            date.setMonth(month);
-            date.setDate(day);
+                var day = dateString.substring(7, 10);
+                var date = new Date();
+                date.setFullYear(year);
+                date.setMonth(month);
+                date.setDate(day);
 
-            return date;
+                return date;
             }
             var month = dateString.substring(5, 7);
-            console.log(month);
             var month = Number(month) - 1;
 
             var day = dateString.substring(8, 11);
