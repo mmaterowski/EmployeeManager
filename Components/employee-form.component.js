@@ -29,7 +29,7 @@
             }
         }
 
-        function fillFormFieldsWithData(employeeID) {
+        function fillFormFieldsWithData() {
             var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
             vm.name = foundEmployee.name;
             vm.surname = foundEmployee.surname;
@@ -48,7 +48,10 @@
                 if (vm.idFromParams) {
                     var index = moqDatabase.getEmployeeIndex(vm.idFromParams);
                     moqDatabase.updateEmployee(index, createdEmployee);
+                    location.reload();
                     $location.path("#");
+
+                    
                 } else {
                     moqDatabase.addEmployee(createdEmployee);
                 }

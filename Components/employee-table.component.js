@@ -11,7 +11,6 @@
         vm.employeeName = 'nothing';
         vm.passedEmployee = {};
 
-
         fetchEmployeeData = (function () {
             vm.data = moqDatabase.getEmployees();
         }());

@@ -63,11 +63,11 @@
             employee.id = index;
             employees.push(employee);
             index++;
-            // $rootScope.onEmployeeCountChanged();
         };
 
         var updateEmployee = function(indexOfEmployee,employeeObj){
             employees[indexOfEmployee] = employeeObj;
+
         }
 
         var deleteEmployee = function (employeeId) {
@@ -76,7 +76,6 @@
             });
             var indexOfFoundEmployee = employees.indexOf(foundEmployee);
             employees.splice(indexOfFoundEmployee, 1);
-            // $rootScope.onEmployeeCountChanged();
         };
 
         var getEmployeeById = function(employeeId){
