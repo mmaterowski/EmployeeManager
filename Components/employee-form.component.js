@@ -17,7 +17,7 @@
         vm.selected.selectedSupervisor = {};
         vm.selected.selectedSupervisor.name = '';
         vm.idFromParams = $routeParams.employeeId;
-        vm.supervisorsArray = '';
+
         vm.employees = moqDatabase.getEmployees();
         vm.supervisorsArray = assingEmployeeNamesToArray(vm.employees);
         vm.buttonName = "Add employee";
@@ -25,18 +25,20 @@
 
         vm.$onInit = function () {
             if (vm.idFromParams) {
-
-                var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
-                vm.name = foundEmployee.name;
-                vm.surname = foundEmployee.surname;
-                vm.employedSince = foundEmployee.employedSince,
-                    vm.date = constructDate(vm.employedSince);
-                vm.vacationDays = foundEmployee.vacationDays
-                vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
-                vm.buttonName = "Confirm changes";
-                vm.header = "Edit employee " + foundEmployee.name + " " + foundEmployee.surname;
+                fillFormFieldsWithData(vm.idFromParams);
             }
+        }
 
+        function fillFormFieldsWithData(employeeID) {
+            var foundEmployee = moqDatabase.getEmployeeById(vm.idFromParams);
+            vm.name = foundEmployee.name;
+            vm.surname = foundEmployee.surname;
+            vm.employedSince = foundEmployee.employedSince,
+                vm.date = constructProperlyFormattedDate(vm.employedSince);
+            vm.vacationDays = foundEmployee.vacationDays
+            vm.selected.selectedSupervisor.name = foundEmployee.supervisorName
+            vm.buttonName = "Confirm changes";
+            vm.header = "Edit employee " + foundEmployee.name + " " + foundEmployee.surname;
         }
 
         vm.submitForm = function () {
@@ -54,7 +56,6 @@
         };
 
         function createEmployee() {
-
             return {
                 id: 0,
                 name: vm.name,
@@ -67,38 +68,36 @@
 
         function parseDate(date) {
             if (date) {
+                var correctlyFormattedDate = '';
                 var year = date.getFullYear();
                 var month = date.getMonth();
                 var day = date.getDate();
                 month = month + 1;
 
-                var correctlyFormattedDate = year + "-" + month + "-" + day;
+                if (month > 9 && day > 9) {
+                    correctlyFormattedDate = year + "-" + month + "-" + day;
+                } else if (month > 9) {
+                    correctlyFormattedDate = year + "-" + month + "-" + "0" + day;
+                } else if (day > 9) {
+                    correctlyFormattedDate = year + "-" + "0" + month + "-" + day;
+                } else {
+                    correctlyFormattedDate = year + "-" + "0" + month + "-" + "0" + day;
+                }
+
                 return correctlyFormattedDate;
             } else {
                 alert("date related error!");
             }
         }
 
-        function constructDate(dateString) {
+        function constructProperlyFormattedDate(dateString) {
 
             var year = dateString.substring(0, 4);
-            if (dateString.length == 9) {
-                var month = dateString.substring(5, 6);
-                var month = Number(month) - 1;
-
-                var day = dateString.substring(7, 10);
-                var date = new Date();
-                date.setFullYear(year);
-                date.setMonth(month);
-                date.setDate(day);
-
-                return date;
-            }
             var month = dateString.substring(5, 7);
             var month = Number(month) - 1;
-
             var day = dateString.substring(8, 11);
             var date = new Date();
+
             date.setFullYear(year);
             date.setMonth(month);
             date.setDate(day);
