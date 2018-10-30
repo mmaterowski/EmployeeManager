@@ -89,8 +89,7 @@
 
         var getEmployeeById = function(employeeId){
             for (var i = 0; i < employees.length; i++) {
-                if (employees[i].id === Number(employeeId)) {
-
+                if (employees[i].id == Number(employeeId)) {
                     return employees[i];
                 }
             }

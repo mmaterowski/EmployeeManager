@@ -2,5 +2,7 @@
     <h1>Your employees</h1>
     <hr class="hr-primary" />
 </div>
+<p class="text-danger">{{vm.userRemovedText}}</p>
 
-<employee-table divisor="2"></employee-table>
+<employee-table divisor="2"
+                on-user-removed="vm.displayUserRemovedMessage($event);"></employee-table>
